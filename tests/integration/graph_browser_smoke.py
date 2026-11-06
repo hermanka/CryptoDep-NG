@@ -15,7 +15,8 @@ from cryptodep.web.risk import annotate_risks
 
 def main(url):
     root = Path(__file__).resolve().parents[2]
-    document = json.loads((root / "examples/dvja_cdg_example.json").read_text())
+    # Synthetic graph (not a real scan): it needs red, orange and PQC nodes for the visual checks.
+    document = json.loads((root / "tests/fixtures/web/synthetic-graph.json").read_text())
     document["nodes"] += [
         {"node_id": "qa:sha1", "node_type": "CryptoAlgorithm", "label": "SHA-1", "algorithm_family": "SHA-1", "quantum_vuln_class": "quantum_safe_symmetric"},
         {"node_id": "qa:aes", "node_type": "CryptoAlgorithm", "label": "AES-128-GCM", "algorithm_family": "AES", "quantum_vuln_class": "grover_weakened"},

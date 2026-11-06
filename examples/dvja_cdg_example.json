@@ -1,138 +1,97 @@
 {
-  "cdg_id": "a1b2c3d4-0000-4000-8000-000000000001",
+  "cdg_id": "7fbc42e2-688a-48aa-a15b-6bc262f4720a",
   "schema_version": "1.0.0",
-  "generated_at": "2026-05-01T08:00:00Z",
+  "generated_at": "2026-11-06T02:11:30.621941Z",
   "generated_by": "CryptoDep-LLM v1.0",
   "target_repo": {
-    "name": "dvja",
+    "path": ".",
     "url": "https://github.com/appsecco/dvja",
-    "commit": "example",
-    "languages": ["java"]
+    "commit": "597ece1ab79ffffea7289d49b0c443bb2ebcbd16"
   },
   "scan_stats": {
-    "files_scanned": 42,
-    "loc_scanned": 1409,
-    "algo_nodes": 2,
-    "total_edges": 4,
-    "quantum_vulnerable_count": 1,
-    "critical_migration_count": 1
+    "run_id": "3410687e-e1d8-45c1-acd1-0e8d4e587ef7",
+    "node_count": 3,
+    "edge_count": 2,
+    "a3_proposed_edges": 2,
+    "a3_validated_edges": 2,
+    "a3_hallucination_rate": 0.0
   },
   "nodes": [
     {
-      "node_id": "cdg:CryptoAlgorithm:rsa1024",
-      "node_type": "CryptoAlgorithm",
-      "label": "RSA-1024",
-      "algorithm_family": "RSA",
-      "parameter_set": "RSA-1024",
-      "key_size_bits": 1024,
-      "quantum_vuln_class": "quantum_vulnerable",
-      "urgency_score": 90.0,
-      "migration_priority": "critical",
-      "hndl_risk": true,
-      "source_ref": "src/main/java/com/appsecco/dvja/service/CryptoService.java:L18",
-      "confidence": 0.99,
-      "detected_by": "static_rule"
-    },
-    {
-      "node_id": "cdg:CryptoAlgorithm:md5",
+      "node_id": "cdg:node:ccf50fb4-56c9-4e35-856a-1d48ef77e1bd",
       "node_type": "CryptoAlgorithm",
       "label": "MD5",
+      "source_ref": "src/main/java/com/appsecco/dvja/services/UserService.java:L90",
+      "confidence": 0.9,
+      "detected_by": "hybrid",
+      "metadata": {},
       "algorithm_family": "MD5",
-      "parameter_set": "MD5",
+      "parameter_set": null,
       "key_size_bits": null,
+      "use_context": "other",
       "quantum_vuln_class": "quantum_safe_symmetric",
-      "urgency_score": 0.0,
-      "migration_priority": "none",
+      "migration_priority": "not_required",
+      "migration_urgency_score": 0.0,
       "hndl_risk": false,
-      "source_ref": "src/main/java/com/appsecco/dvja/service/CryptoService.java:L31",
-      "confidence": 0.99,
-      "detected_by": "static_rule"
+      "cbom_ref": null
     },
     {
-      "node_id": "cdg:CryptoLibrary:javasecurity",
-      "node_type": "CryptoLibrary",
-      "label": "java.security",
-      "library_name": "java.security",
-      "language": "java",
-      "is_quantum_safe": false
-    },
-    {
-      "node_id": "cdg:AppComponent:cryptoservice",
+      "node_id": "cdg:node:8335d9fe-0c36-4666-aaf2-c871d8c8acd9",
       "node_type": "AppComponent",
-      "label": "CryptoService",
+      "label": "UserService",
+      "source_ref": null,
+      "confidence": 1.0,
+      "detected_by": "hybrid",
+      "metadata": {},
       "component_type": "class",
       "language": "java",
-      "file_path": "src/main/java/com/appsecco/dvja/service/CryptoService.java",
+      "file_path": "src/main/java/com/appsecco/dvja/services/UserService.java",
+      "lines_of_code": null,
+      "owns_crypto": true,
       "is_boundary": false
     },
     {
-      "node_id": "cdg:PQCAlgorithm:mlkem768",
-      "node_type": "PQCAlgorithm",
-      "label": "ML-KEM-768",
-      "algorithm_id": "ML-KEM-768",
-      "fips_standard": "FIPS 203",
-      "primitive_type": "KEM",
-      "nist_security_level": 3
-    },
-    {
-      "node_id": "cdg:PQCAlgorithm:mldsa65",
-      "node_type": "PQCAlgorithm",
-      "label": "ML-DSA-65",
-      "algorithm_id": "ML-DSA-65",
-      "fips_standard": "FIPS 204",
-      "primitive_type": "DSA",
-      "nist_security_level": 3
+      "node_id": "cdg:node:691cd31d-cf9d-425f-9564-6ab7329908b2",
+      "node_type": "CryptoLibrary",
+      "label": "org.springframework.util.DigestUtils",
+      "source_ref": null,
+      "confidence": 1.0,
+      "detected_by": "hybrid",
+      "metadata": {},
+      "library_name": "org.springframework.util.DigestUtils",
+      "version": null,
+      "language": "java",
+      "import_path": "org.springframework.util.DigestUtils",
+      "pqc_ready": false,
+      "pqc_version_min": null,
+      "cve_count": 0
     }
   ],
   "edges": [
     {
-      "edge_id": "e1",
+      "edge_id": "cdg:edge:7b3a6adf-dfd2-473d-9032-85fae2d225e0",
       "edge_type": "uses",
-      "source_id": "cdg:AppComponent:cryptoservice",
-      "target_id": "cdg:CryptoLibrary:javasecurity",
-      "confidence": 0.95,
-      "evidence": "import java.security.KeyPairGenerator"
+      "source_id": "cdg:node:8335d9fe-0c36-4666-aaf2-c871d8c8acd9",
+      "target_id": "cdg:node:691cd31d-cf9d-425f-9564-6ab7329908b2",
+      "confidence": 0.9,
+      "evidence": "if(!StringUtils.equalsIgnoreCase(DigestUtils.md5DigestAsHex(login.getBytes()), key))",
+      "cbom_dep_type": null
     },
     {
-      "edge_id": "e2",
+      "edge_id": "cdg:edge:70b5a8df-44c3-4ec3-9d2f-79919c24580a",
       "edge_type": "implements",
-      "source_id": "cdg:CryptoLibrary:javasecurity",
-      "target_id": "cdg:CryptoAlgorithm:rsa1024",
-      "confidence": 0.99,
-      "evidence": "KeyPairGenerator.getInstance(\"RSA\"); kpg.initialize(1024)"
-    },
-    {
-      "edge_id": "e3",
-      "edge_type": "migrates_to",
-      "source_id": "cdg:CryptoAlgorithm:rsa1024",
-      "target_id": "cdg:PQCAlgorithm:mlkem768",
+      "source_id": "cdg:node:691cd31d-cf9d-425f-9564-6ab7329908b2",
+      "target_id": "cdg:node:ccf50fb4-56c9-4e35-856a-1d48ef77e1bd",
       "confidence": 1.0,
-      "evidence": "NIST FIPS 203: ML-KEM replaces RSA for key encapsulation"
-    },
-    {
-      "edge_id": "e4",
-      "edge_type": "migrates_to",
-      "source_id": "cdg:CryptoAlgorithm:rsa1024",
-      "target_id": "cdg:PQCAlgorithm:mldsa65",
-      "confidence": 1.0,
-      "evidence": "NIST FIPS 204: ML-DSA replaces RSA for digital signatures"
+      "evidence": "org.springframework.util.DigestUtils provides MD5",
+      "cbom_dep_type": null
     }
   ],
   "migration_plan": {
-    "priority_queue": [
-      {
-        "rank": 1,
-        "current_algorithm": "RSA-1024",
-        "recommended_pqc": "ML-KEM-768",
-        "urgency_score": 90.0,
-        "migration_priority": "critical",
-        "effort_estimate": "weeks",
-        "hybrid_mode_recommended": true,
-        "migration_notes": "RSA-1024 is quantum-vulnerable and below NIST minimum key size. Replace with ML-KEM-768 (FIPS 203) for key encapsulation and ML-DSA-65 (FIPS 204) for signatures. Enable hybrid mode (X25519 + ML-KEM-768) during transition."
-      }
-    ],
-    "total_vulnerable_assets": 1,
-    "quantum_readiness_score": 0.5
+    "priority_queue": [],
+    "total_vulnerable_assets": 0,
+    "quantum_readiness_score": 100.0,
+    "bssn_compliance_status": "unknown"
   },
-  "cbom_export": "urn:cdx:a1b2c3d4-0000-4000-8000-000000000001:1"
+  "cbom_export": null
 }
