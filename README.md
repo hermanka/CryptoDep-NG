@@ -1,4 +1,4 @@
-# CryptoDep-LLM
+# CryptoDep-NG
 
 Based on [https://github.com/girnot/CryptoDep-LLM](https://github.com/girnot/CryptoDep-LLM)
 > **LLM-Powered Crypto Dependency Graph Construction for Automated PQC Migration Planning**
