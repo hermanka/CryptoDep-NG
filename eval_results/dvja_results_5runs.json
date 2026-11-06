@@ -1,0 +1,163 @@
+{
+  "runs": 5,
+  "metrics": {
+    "node_f1": {
+      "mean": 1.0,
+      "std": 0.0
+    },
+    "node_precision": {
+      "mean": 1.0,
+      "std": 0.0
+    },
+    "node_recall": {
+      "mean": 1.0,
+      "std": 0.0
+    },
+    "edge_f1": {
+      "mean": 1.0,
+      "std": 0.0
+    },
+    "edge_precision": {
+      "mean": 1.0,
+      "std": 0.0
+    },
+    "edge_recall": {
+      "mean": 1.0,
+      "std": 0.0
+    },
+    "multihop_recall": {
+      "mean": 1.0,
+      "std": 0.0
+    },
+    "spearman_rho": {
+      "mean": 1.0,
+      "std": 0.0
+    },
+    "critical_recall": {
+      "mean": 1.0,
+      "std": 0.0
+    },
+    "hallucination_rate": {
+      "mean": 0.0,
+      "std": 0.0
+    },
+    "token_efficiency": {
+      "mean": 1193.52,
+      "std": 65.45503494766461
+    },
+    "throughput": {
+      "mean": 586.7257141443124,
+      "std": 122.84740604929549
+    }
+  },
+  "passes": {
+    "passes_node_f1": true,
+    "passes_edge_f1": true,
+    "passes_multihop_recall": true,
+    "passes_spearman_rho": true,
+    "passes_hallucination_rate": true,
+    "passes_critical_recall": true
+  },
+  "individual_runs": [
+    {
+      "node_f1": 1.0,
+      "node_precision": 1.0,
+      "node_recall": 1.0,
+      "edge_f1": 1.0,
+      "edge_precision": 1.0,
+      "edge_recall": 1.0,
+      "multihop_recall": 1.0,
+      "spearman_rho": 1.0,
+      "critical_recall": 1.0,
+      "hallucination_rate": 0.0,
+      "token_efficiency": 1215.0,
+      "throughput": 571.3099458854083,
+      "passes_node_f1": true,
+      "passes_edge_f1": true,
+      "passes_multihop_recall": true,
+      "passes_spearman_rho": true,
+      "passes_critical_recall": true,
+      "passes_hallucination_rate": true
+    },
+    {
+      "node_f1": 1.0,
+      "node_precision": 1.0,
+      "node_recall": 1.0,
+      "edge_f1": 1.0,
+      "edge_precision": 1.0,
+      "edge_recall": 1.0,
+      "multihop_recall": 1.0,
+      "spearman_rho": 1.0,
+      "critical_recall": 1.0,
+      "hallucination_rate": 0.0,
+      "token_efficiency": 1071.2,
+      "throughput": 359.676533767662,
+      "passes_node_f1": true,
+      "passes_edge_f1": true,
+      "passes_multihop_recall": true,
+      "passes_spearman_rho": true,
+      "passes_critical_recall": true,
+      "passes_hallucination_rate": true
+    },
+    {
+      "node_f1": 1.0,
+      "node_precision": 1.0,
+      "node_recall": 1.0,
+      "edge_f1": 1.0,
+      "edge_precision": 1.0,
+      "edge_recall": 1.0,
+      "multihop_recall": 1.0,
+      "spearman_rho": 1.0,
+      "critical_recall": 1.0,
+      "hallucination_rate": 0.0,
+      "token_efficiency": 1267.8,
+      "throughput": 630.6889616885971,
+      "passes_node_f1": true,
+      "passes_edge_f1": true,
+      "passes_multihop_recall": true,
+      "passes_spearman_rho": true,
+      "passes_critical_recall": true,
+      "passes_hallucination_rate": true
+    },
+    {
+      "node_f1": 1.0,
+      "node_precision": 1.0,
+      "node_recall": 1.0,
+      "edge_f1": 1.0,
+      "edge_precision": 1.0,
+      "edge_recall": 1.0,
+      "multihop_recall": 1.0,
+      "spearman_rho": 1.0,
+      "critical_recall": 1.0,
+      "hallucination_rate": 0.0,
+      "token_efficiency": 1198.8,
+      "throughput": 654.0844038837437,
+      "passes_node_f1": true,
+      "passes_edge_f1": true,
+      "passes_multihop_recall": true,
+      "passes_spearman_rho": true,
+      "passes_critical_recall": true,
+      "passes_hallucination_rate": true
+    },
+    {
+      "node_f1": 1.0,
+      "node_precision": 1.0,
+      "node_recall": 1.0,
+      "edge_f1": 1.0,
+      "edge_precision": 1.0,
+      "edge_recall": 1.0,
+      "multihop_recall": 1.0,
+      "spearman_rho": 1.0,
+      "critical_recall": 1.0,
+      "hallucination_rate": 0.0,
+      "token_efficiency": 1214.8,
+      "throughput": 717.8687254961509,
+      "passes_node_f1": true,
+      "passes_edge_f1": true,
+      "passes_multihop_recall": true,
+      "passes_spearman_rho": true,
+      "passes_critical_recall": true,
+      "passes_hallucination_rate": true
+    }
+  ]
+}

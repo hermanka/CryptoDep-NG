@@ -1,0 +1,138 @@
+{
+  "cdg_id": "a1b2c3d4-0000-4000-8000-000000000001",
+  "schema_version": "1.0.0",
+  "generated_at": "2026-05-01T08:00:00Z",
+  "generated_by": "CryptoDep-LLM v1.0",
+  "target_repo": {
+    "name": "dvja",
+    "url": "https://github.com/appsecco/dvja",
+    "commit": "example",
+    "languages": ["java"]
+  },
+  "scan_stats": {
+    "files_scanned": 42,
+    "loc_scanned": 1409,
+    "algo_nodes": 2,
+    "total_edges": 4,
+    "quantum_vulnerable_count": 1,
+    "critical_migration_count": 1
+  },
+  "nodes": [
+    {
+      "node_id": "cdg:CryptoAlgorithm:rsa1024",
+      "node_type": "CryptoAlgorithm",
+      "label": "RSA-1024",
+      "algorithm_family": "RSA",
+      "parameter_set": "RSA-1024",
+      "key_size_bits": 1024,
+      "quantum_vuln_class": "quantum_vulnerable",
+      "urgency_score": 90.0,
+      "migration_priority": "critical",
+      "hndl_risk": true,
+      "source_ref": "src/main/java/com/appsecco/dvja/service/CryptoService.java:L18",
+      "confidence": 0.99,
+      "detected_by": "static_rule"
+    },
+    {
+      "node_id": "cdg:CryptoAlgorithm:md5",
+      "node_type": "CryptoAlgorithm",
+      "label": "MD5",
+      "algorithm_family": "MD5",
+      "parameter_set": "MD5",
+      "key_size_bits": null,
+      "quantum_vuln_class": "quantum_safe_symmetric",
+      "urgency_score": 0.0,
+      "migration_priority": "none",
+      "hndl_risk": false,
+      "source_ref": "src/main/java/com/appsecco/dvja/service/CryptoService.java:L31",
+      "confidence": 0.99,
+      "detected_by": "static_rule"
+    },
+    {
+      "node_id": "cdg:CryptoLibrary:javasecurity",
+      "node_type": "CryptoLibrary",
+      "label": "java.security",
+      "library_name": "java.security",
+      "language": "java",
+      "is_quantum_safe": false
+    },
+    {
+      "node_id": "cdg:AppComponent:cryptoservice",
+      "node_type": "AppComponent",
+      "label": "CryptoService",
+      "component_type": "class",
+      "language": "java",
+      "file_path": "src/main/java/com/appsecco/dvja/service/CryptoService.java",
+      "is_boundary": false
+    },
+    {
+      "node_id": "cdg:PQCAlgorithm:mlkem768",
+      "node_type": "PQCAlgorithm",
+      "label": "ML-KEM-768",
+      "algorithm_id": "ML-KEM-768",
+      "fips_standard": "FIPS 203",
+      "primitive_type": "KEM",
+      "nist_security_level": 3
+    },
+    {
+      "node_id": "cdg:PQCAlgorithm:mldsa65",
+      "node_type": "PQCAlgorithm",
+      "label": "ML-DSA-65",
+      "algorithm_id": "ML-DSA-65",
+      "fips_standard": "FIPS 204",
+      "primitive_type": "DSA",
+      "nist_security_level": 3
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "e1",
+      "edge_type": "uses",
+      "source_id": "cdg:AppComponent:cryptoservice",
+      "target_id": "cdg:CryptoLibrary:javasecurity",
+      "confidence": 0.95,
+      "evidence": "import java.security.KeyPairGenerator"
+    },
+    {
+      "edge_id": "e2",
+      "edge_type": "implements",
+      "source_id": "cdg:CryptoLibrary:javasecurity",
+      "target_id": "cdg:CryptoAlgorithm:rsa1024",
+      "confidence": 0.99,
+      "evidence": "KeyPairGenerator.getInstance(\"RSA\"); kpg.initialize(1024)"
+    },
+    {
+      "edge_id": "e3",
+      "edge_type": "migrates_to",
+      "source_id": "cdg:CryptoAlgorithm:rsa1024",
+      "target_id": "cdg:PQCAlgorithm:mlkem768",
+      "confidence": 1.0,
+      "evidence": "NIST FIPS 203: ML-KEM replaces RSA for key encapsulation"
+    },
+    {
+      "edge_id": "e4",
+      "edge_type": "migrates_to",
+      "source_id": "cdg:CryptoAlgorithm:rsa1024",
+      "target_id": "cdg:PQCAlgorithm:mldsa65",
+      "confidence": 1.0,
+      "evidence": "NIST FIPS 204: ML-DSA replaces RSA for digital signatures"
+    }
+  ],
+  "migration_plan": {
+    "priority_queue": [
+      {
+        "rank": 1,
+        "current_algorithm": "RSA-1024",
+        "recommended_pqc": "ML-KEM-768",
+        "urgency_score": 90.0,
+        "migration_priority": "critical",
+        "effort_estimate": "weeks",
+        "hybrid_mode_recommended": true,
+        "migration_notes": "RSA-1024 is quantum-vulnerable and below NIST minimum key size. Replace with ML-KEM-768 (FIPS 203) for key encapsulation and ML-DSA-65 (FIPS 204) for signatures. Enable hybrid mode (X25519 + ML-KEM-768) during transition."
+      }
+    ],
+    "total_vulnerable_assets": 1,
+    "quantum_readiness_score": 0.5
+  },
+  "cbom_export": "urn:cdx:a1b2c3d4-0000-4000-8000-000000000001:1"
+}

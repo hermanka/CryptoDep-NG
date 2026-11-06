@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Jelajahi dependensi kriptografi dan prioritas migrasi PQC dari source code repository Anda.">
+  <title>CryptoDep — Dependency Explorer</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/style.css">
+  <script defer src="/vendor/cytoscape.min.js"></script>
+  <script defer src="/app.js"></script>
+</head>
+<body>
+  <header class="navigation">
+    <a href="/" class="brand" aria-label="CryptoDep beranda"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="m16 3 12 7v13l-12 7-12-7V10Z M4 10l12 7 12-7 M16 17v13 M10 7l12 7v6"/></svg>CryptoDep<span class="brand-tag">EXPLORER</span></a>
+    <nav aria-label="Navigasi utama">
+      <button class="nav-link active" id="workspace-link">Workspace</button>
+      <button class="nav-link" id="history-open">Riwayat <span id="history-count" class="count">0</span></button>
+    </nav>
+    <button id="theme-toggle" class="icon-button theme-toggle" type="button" aria-label="Ganti ke mode gelap"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg></button><button id="settings-open" class="button ghost small"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 17h16M8 4v6M16 14v6"/></svg>Pengaturan AI</button>
+  </header>
+
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <div><p class="eyebrow"><span class="tiny-square"></span> CRYPTOGRAPHIC DEPENDENCY EXPLORER</p><h1 id="page-title">Lihat hubungan.<br><span>Pahami risikonya.</span></h1></div>
+      <p class="intro-description">Dari source code ke peta kriptografi.<br>Temukan algoritma, telusuri dependensi,<br>dan tinjau kesiapan pascakuantum.</p>
+    </section>
+
+    <form id="scan-form" class="scan-form">
+      <label for="repo-url" class="sr-only">URL repository GitHub publik</label>
+      <div class="repo-field"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7H5v13h14V7h-3 M8 3h8v8H8z M9 15h6"/></svg><input id="repo-url" name="repo_url" type="url" placeholder="https://github.com/owner/repository" autocomplete="url" required maxlength="2048"><span class="input-hint">PUBLIC REPO</span></div>
+      <button type="submit" id="scan-button" class="button primary">Mulai pemindaian <span aria-hidden="true">↗</span></button>
+    </form>
+    <div class="scan-caption"><span>Java · Python · JavaScript</span><span>Potongan kode dikirim ke endpoint AI pilihan Anda. <button type="button" id="settings-inline" class="text-button">Atur endpoint</button></span></div>
+
+    <p id="notice" class="notice" role="status" hidden></p>
+    <section id="progress-panel" class="progress-panel" aria-label="Progres pemindaian" hidden>
+      <div class="progress-heading"><strong id="scan-status">Pemindaian berjalan</strong><span id="stage-count"></span></div>
+      <ol id="stages" class="stages"></ol>
+    </section>
+
+    <section class="workspace" aria-label="Hasil analisis">
+      <div class="workspace-header">
+        <div class="workspace-name"><span class="status-dot"></span><h2 id="result-title">Dependency graph</h2><span id="scan-badge" class="badge">Belum ada pemindaian</span></div>
+        <div class="view-tabs" role="tablist" aria-label="Tampilan hasil"><button id="graph-tab" role="tab" aria-selected="true" aria-controls="graph-view" class="selected">Graph</button><button id="list-tab" role="tab" aria-selected="false" aria-controls="list-view">Daftar</button></div>
+      </div>
+      <div class="workspace-toolbar">
+        <div class="graph-stats"><span><b id="node-count">0</b> node</span><span><b id="edge-count">0</b> hubungan</span><span id="migration-count"></span></div>
+        <div class="toolbar-actions"><label class="sr-only" for="node-search">Cari node</label><input type="search" id="node-search" placeholder="Cari node…" disabled><button id="local-graph" class="button ghost small" aria-pressed="false" disabled>Fokus lokal</button><details class="graph-options"><summary aria-label="Pengaturan graph">Tampilan</summary><div class="graph-options-panel"><label for="risk-filter">Filter risiko</label><select id="risk-filter"><option value="all">Semua risiko</option><option value="red">Merah · Migrasi PQC</option><option value="orange">Oranye · Tinjau keamanan</option><option value="gray">Abu-abu · Lainnya</option><option value="unknown">? Belum diketahui</option></select><label for="type-filter">Jenis node</label><select id="type-filter"><option value="all">Semua jenis</option><option value="AppComponent">Komponen</option><option value="CryptoLibrary">Library</option><option value="CryptoAlgorithm">Algoritma</option><option value="PQCAlgorithm">Kandidat PQC</option></select><label for="local-depth">Kedalaman lokal <output id="depth-value">1</output></label><input id="local-depth" type="range" min="1" max="4" value="1"><label class="checkbox-label"><input id="show-orphans" type="checkbox" checked>Node tanpa hubungan</label><label class="checkbox-label"><input id="show-labels" type="checkbox" checked>Nama node</label><label class="checkbox-label"><input id="show-edge-labels" type="checkbox">Label hubungan</label><label class="checkbox-label"><input id="show-arrows" type="checkbox" checked>Arah hubungan</label><label for="node-size">Ukuran node</label><input id="node-size" type="range" min="70" max="160" value="100"><label for="link-distance">Jarak hubungan</label><input id="link-distance" type="range" min="50" max="200" value="100"><label for="repel-force">Gaya tolak</label><input id="repel-force" type="range" min="2000" max="20000" step="1000" value="8000"><button id="reset-graph-options" class="button ghost small" type="button">Pulihkan tampilan</button></div></details><button id="relayout-graph" class="icon-button" title="Tata ulang graph" aria-label="Tata ulang graph" disabled>↻</button><button id="fit-graph" class="icon-button" title="Sesuaikan graph" aria-label="Sesuaikan graph" disabled>⊙</button><button id="fullscreen-graph" class="icon-button" title="Layar penuh" aria-label="Layar penuh">⛶</button><button id="download-cdg" class="icon-button" title="Unduh CDG" aria-label="Unduh CDG" disabled>↓</button></div>
+      </div>
+      <div class="result-content">
+        <aside id="ask-panel" class="ask-panel" aria-label="Tanya graph" hidden><div class="ask-heading"><span class="eyebrow">✦ TANYA GRAPH</span><button type="button" id="ask-close" class="icon-button" aria-label="Tutup tanya graph">×</button></div><div id="ask-log" class="ask-log" aria-live="polite"></div><form id="ask-form" class="ask-form"><label for="ask-input" class="sr-only">Pertanyaan tentang graph</label><input id="ask-input" type="text" minlength="3" maxlength="500" required disabled placeholder="Tulis pertanyaan…" autocomplete="off"><button id="ask-button" class="button primary small" disabled>Kirim</button></form></aside>
+        <div class="visualization"><button type="button" id="ask-toggle" class="ask-toggle" aria-controls="ask-panel" aria-expanded="false" disabled><span aria-hidden="true">✦</span>Tanya graph</button><button type="button" id="log-toggle" class="log-toggle" aria-controls="scan-log" aria-expanded="false" hidden><span aria-hidden="true">&gt;_</span>Log proses</button><section id="scan-log" class="scan-log" aria-label="Log proses pemindaian" hidden><div class="scan-log-heading"><span>LOG PROSES</span><button type="button" id="log-close" class="icon-button" aria-label="Tutup log proses">×</button></div><pre id="log-lines" tabindex="0"></pre></section>
+          <div id="graph-view" role="tabpanel" aria-labelledby="graph-tab" tabindex="0"><div id="graph" aria-label="Graph dependensi kriptografi; gunakan tampilan Daftar untuk navigasi keyboard"></div><div id="graph-tooltip" role="tooltip" hidden></div><div id="filter-empty" class="filter-empty" hidden>Tidak ada node sesuai filter. Ubah filter atau pulihkan tampilan.</div><div id="empty-state" class="empty-state"><div class="empty-illustration" aria-hidden="true"><span></span><span></span><span></span><i></i></div><h3>Sebuah repository.<br>Seluruh keterkaitannya.</h3><p>Masukkan URL repository untuk mulai<br>memetakan penggunaan kriptografi.</p><span class="empty-caption">SOURCE → FINDINGS → DEPENDENCIES</span><ol id="canvas-stages" class="canvas-stages" aria-hidden="true" hidden></ol></div><div class="zoom-controls"><button id="zoom-in" aria-label="Perbesar graph" disabled>+</button><button id="zoom-out" aria-label="Perkecil graph" disabled>−</button></div></div>
+          <div id="list-view" role="tabpanel" aria-labelledby="list-tab" hidden><div class="table-scroll"><table><thead><tr><th>Node / algoritma</th><th>Jenis</th><th>Risiko & tindakan</th><th>Confidence</th></tr></thead><tbody id="node-list"></tbody></table></div><p id="list-empty" class="list-empty">Hasil pemindaian akan ditampilkan di sini.</p></div>
+        </div>
+        <aside id="node-detail" class="node-detail" aria-label="Detail node" hidden><div class="detail-heading"><span class="eyebrow">DETAIL NODE</span><button id="detail-close" class="icon-button" aria-label="Tutup detail node">×</button></div><div id="detail-body"></div></aside>
+      </div>
+      <footer class="workspace-footer"><div class="legend"><span><i class="red-dot"></i>Migrasi PQC</span><span><i class="orange-dot"></i>Tinjau keamanan</span><span><i class="green-dot"></i>Pengganti PQC</span><span><i class="gray-dot"></i>Lainnya</span><span>? Belum diketahui</span><span class="divider" aria-hidden="true"></span><span><i class="shape circle"></i>Algoritma</span><span><i class="shape square"></i>Komponen</span><span><i class="shape hex"></i>Library</span><span><i class="shape diamond"></i>PQC</span></div><span id="graph-help">Hover: koneksi · Klik: detail · Dua kali: fokus lokal · Drag: geser</span></footer>
+    </section>
+
+    <div id="result-meta" class="result-meta" hidden></div>
+    <footer class="page-footer"><span>CryptoDep<span class="footer-divider">/</span>Static analysis. Connected insights.</span><span id="model-caption">Endpoint AI belum dikonfigurasi</span></footer>
+  </main>
+
+  <dialog id="settings-dialog" aria-labelledby="settings-title"><form id="settings-form"><div class="modal-heading"><div><p class="eyebrow">KONFIGURASI</p><h2 id="settings-title">Hubungkan model AI</h2></div><button type="button" id="settings-close" class="icon-button" aria-label="Tutup pengaturan">×</button></div><p class="muted">Gunakan endpoint kompatibel OpenAI Chat Completions. Pengaturan berlaku untuk pemindaian berikutnya.</p><label for="ai-endpoint">Endpoint URL</label><input id="ai-endpoint" type="url" placeholder="https://provider.example/v1" required maxlength="2048"><label for="ai-model">Nama model</label><input id="ai-model" placeholder="ID model dari provider Anda" required maxlength="200"><label for="ai-key">API key <span class="muted">opsional untuk endpoint lokal</span></label><input id="ai-key" type="password" autocomplete="new-password" placeholder="Masukkan API key" maxlength="4096"><p id="key-status" class="field-hint">Key hanya disimpan di server dan tidak dikirim kembali ke browser.</p><label class="checkbox-label"><input id="clear-key" type="checkbox">Hapus key tersimpan</label><p id="settings-message" role="status" class="field-hint"></p><div class="modal-actions"><button type="button" id="test-ai" class="button ghost">Uji koneksi</button><button type="submit" class="button primary">Simpan pengaturan</button></div></form></dialog>
+
+  <dialog id="history-dialog" aria-labelledby="history-title"><div class="modal-heading"><div><p class="eyebrow">TERSIMPAN SECARA LOKAL</p><h2 id="history-title">Riwayat pemindaian</h2></div><button id="history-close" class="icon-button" aria-label="Tutup riwayat">×</button></div><p class="muted">Buka kembali hasil tanpa menjalankan pemindaian ulang.</p><div id="history-list"></div></dialog>
+<dialog id="confirm-dialog" aria-labelledby="confirm-title"><form method="dialog"><div class="modal-heading"><div><p class="eyebrow">KONFIRMASI</p><h2 id="confirm-title">Hapus riwayat?</h2></div></div><p id="confirm-message" class="muted"></p><div class="modal-actions"><button value="cancel" class="button ghost">Batal</button><button value="ok" class="button danger">Hapus</button></div></form></dialog>
+</body>
+</html>

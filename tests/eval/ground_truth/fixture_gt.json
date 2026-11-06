@@ -1,0 +1,104 @@
+{
+  "nodes": [
+    {
+      "node_id": "gt:node:rsa2048",
+      "node_type": "CryptoAlgorithm",
+      "label": "RSA-2048",
+      "algorithm_family": "RSA",
+      "parameter_set": "RSA-2048",
+      "quantum_vuln_class": "quantum_vulnerable",
+      "migration_priority": "critical",
+      "hndl_risk": true,
+      "migration_urgency_score": 90.0
+    },
+    {
+      "node_id": "gt:node:aes-cbc",
+      "node_type": "CryptoAlgorithm",
+      "label": "AES-CBC",
+      "algorithm_family": "AES",
+      "parameter_set": "AES-128",
+      "quantum_vuln_class": "quantum_safe_symmetric",
+      "migration_priority": "low",
+      "hndl_risk": false,
+      "migration_urgency_score": 20.0
+    },
+    {
+      "node_id": "gt:node:javax-crypto",
+      "node_type": "CryptoLibrary",
+      "label": "javax.crypto",
+      "library_name": "javax.crypto",
+      "language": "java"
+    },
+    {
+      "node_id": "gt:node:auth-service",
+      "node_type": "AppComponent",
+      "label": "AuthService",
+      "component_type": "class",
+      "language": "java"
+    },
+    {
+      "node_id": "gt:node:tls",
+      "node_type": "Protocol",
+      "label": "TLS",
+      "protocol_name": "TLS",
+      "quantum_vulnerable_handshake": true
+    },
+    {
+      "node_id": "gt:node:ml-kem-768",
+      "node_type": "PQCAlgorithm",
+      "label": "ML-KEM-768",
+      "algorithm_id": "ML-KEM-768",
+      "fips_standard": "FIPS 203",
+      "security_level": 3,
+      "primitive_type": "KEM",
+      "math_basis": "lattice_mlwe"
+    }
+  ],
+  "edges": [
+    {
+      "edge_type": "uses",
+      "source_label": "AuthService",
+      "target_label": "javax.crypto",
+      "confidence": 1.0
+    },
+    {
+      "edge_type": "implements",
+      "source_label": "javax.crypto",
+      "target_label": "RSA-2048",
+      "confidence": 1.0
+    },
+    {
+      "edge_type": "implements",
+      "source_label": "javax.crypto",
+      "target_label": "AES-CBC",
+      "confidence": 1.0
+    },
+    {
+      "edge_type": "migrates_to",
+      "source_label": "RSA-2048",
+      "target_label": "ML-KEM-768",
+      "confidence": 1.0
+    }
+  ],
+  "migration_plan": {
+    "priority_queue": [
+      {
+        "rank": 1,
+        "current_algorithm": "RSA-2048",
+        "recommended_pqc": "ML-KEM-768",
+        "urgency_score": 90.0,
+        "migration_priority": "critical"
+      },
+      {
+        "rank": 2,
+        "current_algorithm": "AES-CBC",
+        "recommended_pqc": null,
+        "urgency_score": 20.0,
+        "migration_priority": "low"
+      }
+    ]
+  },
+  "scan_stats": {
+    "total_loc": 100
+  }
+}

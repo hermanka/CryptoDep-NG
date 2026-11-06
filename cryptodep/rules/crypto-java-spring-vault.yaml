@@ -1,0 +1,36 @@
+rules:
+  - id: spring-vault-template-write
+    patterns:
+      - pattern: $VAULT.write(...)
+      - pattern-inside: |
+          class $C {
+            ...
+            VaultTemplate $VAULT;
+            ...
+          }
+    message: "Spring Vault: VaultTemplate.write"
+    languages: [java]
+    severity: WARNING
+    metadata:
+      category: crypto-spring-vault
+      algorithm_family: VAULT_TRANSIT
+
+  - id: spring-vault-transit-encrypt
+    patterns:
+      - pattern: $OPS.encrypt(...)
+    message: "Spring Vault: VaultTransitOperations.encrypt"
+    languages: [java]
+    severity: WARNING
+    metadata:
+      category: crypto-spring-vault
+      algorithm_family: VAULT_TRANSIT
+
+  - id: spring-vault-import
+    patterns:
+      - pattern: import org.springframework.vault.$X;
+    message: "Spring Vault import: $X"
+    languages: [java]
+    severity: INFO
+    metadata:
+      category: crypto-spring-vault-import
+      algorithm_family: VAULT_TRANSIT

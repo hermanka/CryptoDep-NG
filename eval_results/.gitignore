@@ -1,0 +1,6 @@
+# Large CDG JSON outputs — not committed (regenerate with cryptodep run)
+*_cdg.json
+cdg_eval_tmp.json
+
+# Results JSON files ARE committed (small, stable, needed for paper)
+!*_results.json

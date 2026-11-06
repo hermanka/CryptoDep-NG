@@ -1,0 +1,68 @@
+rules:
+  - id: spring-bcrypt-encoder
+    patterns:
+      - pattern: new BCryptPasswordEncoder(...)
+    message: "Spring Security: BCryptPasswordEncoder"
+    languages: [java]
+    severity: INFO
+    metadata:
+      category: crypto-spring-api
+      algorithm_family: BCRYPT
+
+  - id: spring-scrypt-encoder
+    patterns:
+      - pattern: new SCryptPasswordEncoder(...)
+    message: "Spring Security: SCryptPasswordEncoder"
+    languages: [java]
+    severity: INFO
+    metadata:
+      category: crypto-spring-api
+      algorithm_family: SCRYPT
+
+  - id: spring-argon2-encoder
+    patterns:
+      - pattern: new Argon2PasswordEncoder(...)
+    message: "Spring Security: Argon2PasswordEncoder"
+    languages: [java]
+    severity: INFO
+    metadata:
+      category: crypto-spring-api
+      algorithm_family: ARGON2
+
+  - id: spring-delegating-encoder
+    patterns:
+      - pattern: PasswordEncoderFactories.createDelegatingPasswordEncoder()
+    message: "Spring Security: DelegatingPasswordEncoder"
+    languages: [java]
+    severity: INFO
+    metadata:
+      category: crypto-spring-api
+      algorithm_family: BCRYPT
+
+  - id: spring-oauth2-jwt-decoder
+    patterns:
+      - pattern: NimbusJwtDecoder.$METHOD(...)
+    message: "Spring Security: NimbusJwtDecoder"
+    languages: [java]
+    severity: WARNING
+    metadata:
+      category: crypto-spring-jwt
+
+  - id: spring-security-import
+    patterns:
+      - pattern: import org.springframework.security.$X;
+    message: "Spring Security import: $X"
+    languages: [java]
+    severity: INFO
+    metadata:
+      category: crypto-spring-import
+
+  - id: spring-digest-utils-md5
+    patterns:
+      - pattern: DigestUtils.md5DigestAsHex(...)
+    message: "Spring DigestUtils: MD5 hash"
+    languages: [java]
+    severity: WARNING
+    metadata:
+      category: crypto-spring-api
+      algorithm_family: MD5

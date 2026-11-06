@@ -1,0 +1,94 @@
+rules:
+  # crypto-java-import: javax.crypto.*, org.bouncycastle.*, java.security.*
+  - id: crypto-java-import-javax
+    patterns:
+      - pattern: import javax.crypto.$X;
+    message: "Crypto import: javax.crypto.$X"
+    languages: [java]
+    severity: INFO
+    metadata:
+      category: crypto-java-import
+
+  - id: crypto-java-import-bouncycastle
+    patterns:
+      - pattern: import org.bouncycastle.$X;
+    message: "Crypto import: org.bouncycastle.$X"
+    languages: [java]
+    severity: INFO
+    metadata:
+      category: crypto-java-import
+
+  - id: crypto-java-import-security
+    patterns:
+      - pattern: import java.security.$X;
+    message: "Crypto import: java.security.$X"
+    languages: [java]
+    severity: INFO
+    metadata:
+      category: crypto-java-import
+
+  # crypto-java-api: Cipher.getInstance(), KeyPairGenerator.getInstance(), MessageDigest.getInstance()
+  - id: crypto-java-cipher-getinstance
+    patterns:
+      - pattern: Cipher.getInstance($ALG)
+    message: "Crypto API: Cipher.getInstance($ALG)"
+    languages: [java]
+    severity: WARNING
+    metadata:
+      category: crypto-java-api
+
+  - id: crypto-java-keypairgenerator-getinstance
+    patterns:
+      - pattern: KeyPairGenerator.getInstance($ALG)
+    message: "Crypto API: KeyPairGenerator.getInstance($ALG)"
+    languages: [java]
+    severity: WARNING
+    metadata:
+      category: crypto-java-api
+
+  - id: crypto-java-messagedigest-getinstance
+    patterns:
+      - pattern: MessageDigest.getInstance($ALG)
+    message: "Crypto API: MessageDigest.getInstance($ALG)"
+    languages: [java]
+    severity: WARNING
+    metadata:
+      category: crypto-java-api
+
+  # crypto-constants: algorithm string literals
+  - id: crypto-java-rsa-literal
+    patterns:
+      - pattern: |
+          "$ALG"
+      - metavariable-regex:
+          metavariable: $ALG
+          regex: '(RSA|ECDSA|DH|EC|AES|DES|SHA1|SHA-1|MD5)'
+    message: "Crypto constant literal: $ALG"
+    languages: [java]
+    severity: INFO
+    metadata:
+      category: crypto-constants
+
+  # crypto-tls-config: SSLContext, TrustManager, cipher_suites
+  - id: crypto-java-sslcontext
+    patterns:
+      - pattern: SSLContext.getInstance($PROTO)
+    message: "TLS config: SSLContext.getInstance($PROTO)"
+    languages: [java]
+    severity: WARNING
+    metadata:
+      category: crypto-tls-config
+
+  # crypto-jwt: jwt.encode/decode, RS256, ES256
+  - id: crypto-java-jwt-alg
+    patterns:
+      - pattern: |
+          "$ALG"
+      - metavariable-regex:
+          metavariable: $ALG
+          regex: '(RS256|RS384|RS512|ES256|ES384|ES512|HS256|HS384|HS512)'
+    message: "JWT algorithm: $ALG"
+    languages: [java]
+    severity: WARNING
+    metadata:
+      category: crypto-jwt

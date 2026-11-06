@@ -1,0 +1,130 @@
+{
+  "annotators": [
+    "A1",
+    "A2"
+  ],
+  "total_findings": 12,
+  "findings": [
+    {
+      "finding_id": "node_cdg:node:cb04afa7-0ad4-4ac9-b517-01be7f06070b",
+      "file_path": "test_repos\\webgoat\\src\\it\\java\\org\\owasp\\webgoat\\integration\\CryptoIntegrationTest.java",
+      "line_number": 11,
+      "function_name": null,
+      "algorithm": "CRYPTO_IMPORT",
+      "algorithm_confidence": 0.8,
+      "code_context": "Type: CryptoAlgorithm, Confidence: 0.8, Context: other, Quantum vuln: unknown",
+      "source_type": "node"
+    },
+    {
+      "finding_id": "node_cdg:node:ffeb406c-f188-4999-812f-4796fba49080",
+      "file_path": "test_repos\\webgoat\\src\\it\\java\\org\\owasp\\webgoat\\integration\\JWTLessonIntegrationTest.java",
+      "line_number": 252,
+      "function_name": null,
+      "algorithm": "RSA",
+      "algorithm_confidence": 0.9,
+      "code_context": "Type: CryptoAlgorithm, Confidence: 0.9, Context: other, Quantum vuln: quantum_vulnerable",
+      "source_type": "node"
+    },
+    {
+      "finding_id": "node_cdg:node:46206614-2e13-4cdb-89c5-35a5f3d2d59c",
+      "file_path": "test_repos\\webgoat\\src\\main\\java\\org\\owasp\\webgoat\\lessons\\cryptography\\HashingAssignment.java",
+      "line_number": 39,
+      "function_name": null,
+      "algorithm": "MD5",
+      "algorithm_confidence": 0.9,
+      "code_context": "Type: CryptoAlgorithm, Confidence: 0.9, Context: other, Quantum vuln: unknown",
+      "source_type": "node"
+    },
+    {
+      "finding_id": "node_cdg:node:1b7e25a1-9e52-4ede-8412-f49d5137589a",
+      "file_path": "test_repos\\webgoat\\src\\main\\java\\org\\owasp\\webgoat\\lessons\\cryptography\\HashingAssignment.java",
+      "line_number": 84,
+      "function_name": null,
+      "algorithm": "UNKNOWN",
+      "algorithm_confidence": 0.9,
+      "code_context": "Type: CryptoAlgorithm, Confidence: 0.9, Context: other, Quantum vuln: unknown",
+      "source_type": "node"
+    },
+    {
+      "finding_id": "node_cdg:node:b1fc0b71-f595-44a3-811e-c34175f39723",
+      "file_path": "test_repos\\webgoat\\src\\main\\java\\org\\owasp\\webgoat\\lessons\\missingac\\DisplayUser.java",
+      "line_number": 33,
+      "function_name": null,
+      "algorithm": "SHA-256",
+      "algorithm_confidence": 0.9,
+      "code_context": "Type: CryptoAlgorithm, Confidence: 0.9, Context: other, Quantum vuln: unknown",
+      "source_type": "node"
+    },
+    {
+      "finding_id": "node_cdg:node:8df4cdff-4db7-4291-a42c-a72b91a51776",
+      "file_path": "test_repos\\webgoat\\src\\test\\java\\org\\owasp\\webgoat\\webwolf\\jwt\\JWTTokenTest.java",
+      "line_number": 24,
+      "function_name": null,
+      "algorithm": "HMAC",
+      "algorithm_confidence": 0.85,
+      "code_context": "Type: CryptoAlgorithm, Confidence: 0.85, Context: other, Quantum vuln: unknown",
+      "source_type": "node"
+    },
+    {
+      "finding_id": "node_cdg:node:96e30129-35c0-45b0-a087-980a32c64ddf",
+      "file_path": "test_repos\\webgoat\\src\\it\\java\\org\\owasp\\webgoat\\integration\\CryptoIntegrationTest.java",
+      "line_number": -1,
+      "function_name": null,
+      "algorithm": "Base64",
+      "algorithm_confidence": 0.9,
+      "code_context": "Type: CryptoAlgorithm, Confidence: 0.9, Context: other, Quantum vuln: unknown",
+      "source_type": "node"
+    },
+    {
+      "finding_id": "node_cdg:node:f77b5541-d369-4ff7-9ed3-82559c6f1d75",
+      "file_path": "test_repos\\webgoat\\src\\it\\java\\org\\owasp\\webgoat\\integration\\JWTLessonIntegrationTest.java",
+      "line_number": -1,
+      "function_name": null,
+      "algorithm": "RSA-2048",
+      "algorithm_confidence": 1.0,
+      "code_context": "Type: CryptoAlgorithm, Confidence: 1.0, Context: digital_signature, Quantum vuln: quantum_vulnerable",
+      "source_type": "node"
+    },
+    {
+      "finding_id": "node_cdg:node:96a33676-7fe8-43ef-a50a-0736cc41378d",
+      "file_path": "test_repos\\webgoat\\src\\main\\java\\org\\owasp\\webgoat\\lessons\\cryptography\\CryptoUtil.java",
+      "line_number": -1,
+      "function_name": null,
+      "algorithm": "2048-bit with Fermat primes",
+      "algorithm_confidence": 1.0,
+      "code_context": "Type: CryptoAlgorithm, Confidence: 1.0, Context: key_exchange, Quantum vuln: quantum_vulnerable",
+      "source_type": "node"
+    },
+    {
+      "finding_id": "node_cdg:node:60015dbf-8eac-4ceb-8980-11ea5d24179d",
+      "file_path": "test_repos\\webgoat\\src\\main\\java\\org\\owasp\\webgoat\\lessons\\cryptography\\CryptoUtil.java",
+      "line_number": -1,
+      "function_name": null,
+      "algorithm": "SHA256withRSA",
+      "algorithm_confidence": 1.0,
+      "code_context": "Type: CryptoAlgorithm, Confidence: 1.0, Context: digital_signature, Quantum vuln: quantum_vulnerable",
+      "source_type": "node"
+    },
+    {
+      "finding_id": "node_cdg:node:de1b8ec8-7725-4f5d-9d4f-3e05a3e1f2f4",
+      "file_path": "test_repos\\webgoat\\src\\main\\java\\org\\owasp\\webgoat\\lessons\\cryptography\\HashingAssignment.java",
+      "line_number": -1,
+      "function_name": null,
+      "algorithm": "SHA-256",
+      "algorithm_confidence": 1.0,
+      "code_context": "Type: CryptoAlgorithm, Confidence: 1.0, Context: hashing, Quantum vuln: unknown",
+      "source_type": "node"
+    },
+    {
+      "finding_id": "node_cdg:node:ca71e970-5e84-4b26-b306-8ffb0500583a",
+      "file_path": "test_repos\\webgoat\\src\\test\\java\\org\\owasp\\webgoat\\lessons\\jwt\\claimmisuse\\JWTHeaderJKUEndpointTest.java",
+      "line_number": -1,
+      "function_name": null,
+      "algorithm": "RS256",
+      "algorithm_confidence": 1.0,
+      "code_context": "Type: CryptoAlgorithm, Confidence: 1.0, Context: digital_signature, Quantum vuln: quantum_vulnerable",
+      "source_type": "node"
+    }
+  ],
+  "instructions": "See docs/ANNOTATION_GUIDE.md for labeling instructions"
+}

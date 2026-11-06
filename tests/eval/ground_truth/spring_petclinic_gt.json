@@ -1,0 +1,29 @@
+{
+  "nodes": [
+    {
+      "node_id": "sp:node:bcrypt",
+      "node_type": "CryptoAlgorithm",
+      "label": "BCrypt",
+      "algorithm_family": "BCrypt",
+      "parameter_set": null,
+      "quantum_vuln_class": "quantum_safe_symmetric",
+      "migration_priority": "not_required",
+      "hndl_risk": false,
+      "migration_urgency_score": 0.0
+    },
+    {
+      "node_id": "sp:node:comp:security-config",
+      "node_type": "AppComponent",
+      "label": "SecurityConfiguration",
+      "component_type": "class",
+      "language": "java"
+    }
+  ],
+  "edges": [],
+  "migration_plan": {
+    "priority_queue": []
+  },
+  "scan_stats": {
+    "total_loc": 3789
+  }
+}

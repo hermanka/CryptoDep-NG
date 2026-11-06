@@ -1,0 +1,19 @@
+Found 5 eval files in eval_results/cdg_per_run/sonnet46_webgoat_20260425
+
+Metric                     Mean     ±Std
+------------------------------------------
+node_f1                  0.9470   0.0190
+edge_f1                  0.9111   0.0444
+multihop_recall          1.0000   0.0000
+spearman_rho             1.0000   0.0000
+critical_recall          1.0000   0.0000
+hallucination_rate       0.0804   0.0752
+
+Harness hallucination_rate (may be fallback artifact):
+  Run 1: harness=0.0909, scan_stats=0.0909
+  Run 2: harness=0.0000, scan_stats=0.0000
+  Run 3: harness=0.0000, scan_stats=0.0000
+  Run 4: harness=0.2000, scan_stats=0.2000
+  Run 5: harness=0.1111, scan_stats=0.1111
+
+Scan_stats hallucination rate (5 runs with data): 0.0804 ± 0.0752

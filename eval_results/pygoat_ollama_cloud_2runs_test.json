@@ -1,0 +1,103 @@
+{
+  "runs": 2,
+  "metrics": {
+    "node_f1": {
+      "mean": 0.33333333333333337,
+      "std": 0.0
+    },
+    "node_precision": {
+      "mean": 1.0,
+      "std": 0.0
+    },
+    "node_recall": {
+      "mean": 0.2,
+      "std": 0.0
+    },
+    "edge_f1": {
+      "mean": 0.0,
+      "std": 0.0
+    },
+    "edge_precision": {
+      "mean": 0.0,
+      "std": 0.0
+    },
+    "edge_recall": {
+      "mean": 0.0,
+      "std": 0.0
+    },
+    "multihop_recall": {
+      "mean": 1.0,
+      "std": 0.0
+    },
+    "spearman_rho": {
+      "mean": 1.0,
+      "std": 0.0
+    },
+    "critical_recall": {
+      "mean": 1.0,
+      "std": 0.0
+    },
+    "hallucination_rate": {
+      "mean": 0.0,
+      "std": 0.0
+    },
+    "token_efficiency": {
+      "mean": 0.0,
+      "std": 0.0
+    },
+    "throughput": {
+      "mean": 41147.32336400282,
+      "std": 23717.830709422764
+    }
+  },
+  "passes": {
+    "passes_node_f1": false,
+    "passes_edge_f1": false,
+    "passes_multihop_recall": true,
+    "passes_spearman_rho": true,
+    "passes_hallucination_rate": true,
+    "passes_critical_recall": true
+  },
+  "individual_runs": [
+    {
+      "node_f1": 0.33333333333333337,
+      "node_precision": 1.0,
+      "node_recall": 0.2,
+      "edge_f1": 0.0,
+      "edge_precision": 0.0,
+      "edge_recall": 0.0,
+      "multihop_recall": 1.0,
+      "spearman_rho": 1.0,
+      "critical_recall": 1.0,
+      "hallucination_rate": 0.0,
+      "token_efficiency": 0.0,
+      "throughput": 17429.49265458006,
+      "passes_node_f1": false,
+      "passes_edge_f1": false,
+      "passes_multihop_recall": true,
+      "passes_spearman_rho": true,
+      "passes_critical_recall": true,
+      "passes_hallucination_rate": true
+    },
+    {
+      "node_f1": 0.33333333333333337,
+      "node_precision": 1.0,
+      "node_recall": 0.2,
+      "edge_f1": 0.0,
+      "edge_precision": 0.0,
+      "edge_recall": 0.0,
+      "multihop_recall": 1.0,
+      "spearman_rho": 1.0,
+      "critical_recall": 1.0,
+      "hallucination_rate": 0.0,
+      "token_efficiency": 0.0,
+      "throughput": 64865.15407342558,
+      "passes_node_f1": false,
+      "passes_edge_f1": false,
+      "passes_multihop_recall": true,
+      "passes_spearman_rho": true,
+      "passes_critical_recall": true,
+      "passes_hallucination_rate": true
+    }
+  ]
+}

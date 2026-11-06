@@ -1,0 +1,133 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment / secrets
+.env
+*.env.local
+
+# uv
+.uv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Logs / debug output
+logs/
+
+# Test artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+*.xml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# CDG output (generated files)
+cdg_output.json
+*.cdg.json
+cbom_*.json
+cbom_*_analysis.md
+cdg_*.json
+cdg_*_analysis.md
+cdg_store.db
+*.db
+
+# Pipeline logs
+connection_logs.txt
+
+# Node.js (not used in this project, prevent accidental commits)
+node_modules/
+
+# Paper manuscript drafts (not published yet)
+*.docx
+*.pdf
+
+# Binary assets / screenshots
+*.jpg
+*.JPG
+*.png
+*.PNG
+
+# Annotation / ground truth working copies
+annotation/
+
+# Internal docs (paper drafts, research notes, briefs)
+docs/CDG/
+docs/superpowers/
+docs/cybersec/
+docs/Crptodep_ijai_v2.zip
+docs/*Paper*.md
+docs/*paper*.md
+docs/CryptoDep_LLM_PRD_v1.md
+docs/ijai/
+docs/page_reduction_plan.md
+docs/prompt_*.md
+docs/ollama*
+
+# Node.js lockfiles (not needed for Python project)
+package.json
+package-lock.json
+
+# AI assistant / coding tool config
+CLAUDE.md
+
+# Internal development artifacts
+CODE_IMPLEMENTATION_REVIEW.md
+IMPLEMENTATION_COMPLETE.md
+PHASE_VERIFICATION.md
+PROGRESS.md
+
+# Loose notes / logs
+*.log
+run.log
+note.md
+eval_issue.md
+IMPROVEMENTS_SUMMARY.md
+abreviation\ list.txt
+Fig\ 4\ explanation.txt
+2026-04-15-Isolation\ eval.txt
+tmp_skill.md
+
+# Ad-hoc CDG output files
+*_cdg.json
+rakshak1_cdg.json
+
+# Test repositories (too large; see README for download instructions)
+test_repos/
+
+# Internal utility scripts
+scripts/
+
+# Git worktrees
+.worktrees/
+.autoresearch/
+
+# coding assistants / local knowledge-graph tooling
+.claude/
+.pi/
+.serena/
+graphify-out/
+
+# Web dashboard runtime data (scan history, cloned repos, API key in dashboard.db)
+web_data/
+
+# Internal working notes and plans (public docs: docs/WEB_DOCKER.md, docs/AGENT_FEATURES.md)
+TODO.md
+docs/WEB_DOCKER_PLAN.md

@@ -1,0 +1,154 @@
+{
+  "nodes": [
+    {
+      "node_id": "pg:node:md5",
+      "node_type": "CryptoAlgorithm",
+      "label": "MD5",
+      "algorithm_family": "MD5",
+      "parameter_set": null,
+      "quantum_vuln_class": "quantum_safe_symmetric",
+      "migration_priority": "not_required",
+      "hndl_risk": false,
+      "migration_urgency_score": 0.0
+    },
+    {
+      "node_id": "pg:node:sha256",
+      "node_type": "CryptoAlgorithm",
+      "label": "SHA-256",
+      "algorithm_family": "SHA-256",
+      "parameter_set": null,
+      "quantum_vuln_class": "quantum_safe_symmetric",
+      "migration_priority": "not_required",
+      "hndl_risk": false,
+      "migration_urgency_score": 0.0
+    },
+    {
+      "node_id": "pg:node:hmac",
+      "node_type": "CryptoAlgorithm",
+      "label": "HMAC",
+      "algorithm_family": "HMAC",
+      "parameter_set": null,
+      "quantum_vuln_class": "quantum_safe_symmetric",
+      "migration_priority": "not_required",
+      "hndl_risk": false,
+      "migration_urgency_score": 0.0
+    },
+    {
+      "node_id": "pg:node:lib:hashlib",
+      "node_type": "CryptoLibrary",
+      "label": "hashlib",
+      "library_name": "hashlib",
+      "language": "python"
+    },
+    {
+      "node_id": "pg:node:lib:jwt",
+      "node_type": "CryptoLibrary",
+      "label": "jwt",
+      "library_name": "jwt",
+      "language": "python"
+    },
+    {
+      "node_id": "pg:node:comp:views",
+      "node_type": "AppComponent",
+      "label": "views",
+      "component_type": "module",
+      "language": "python"
+    },
+    {
+      "node_id": "pg:node:comp:utility",
+      "node_type": "AppComponent",
+      "label": "utility",
+      "component_type": "module",
+      "language": "python"
+    },
+    {
+      "node_id": "pg:node:comp:mitre",
+      "node_type": "AppComponent",
+      "label": "mitre",
+      "component_type": "module",
+      "language": "python"
+    },
+    {
+      "node_id": "pg:node:comp:app",
+      "node_type": "AppComponent",
+      "label": "app",
+      "component_type": "module",
+      "language": "python"
+    },
+    {
+      "node_id": "pg:node:comp:models",
+      "node_type": "AppComponent",
+      "label": "models",
+      "component_type": "module",
+      "language": "python"
+    }
+  ],
+  "edges": [
+    {
+      "edge_type": "uses",
+      "source_label": "views",
+      "target_label": "hashlib",
+      "confidence": 1.0
+    },
+    {
+      "edge_type": "uses",
+      "source_label": "views",
+      "target_label": "jwt",
+      "confidence": 1.0
+    },
+    {
+      "edge_type": "uses",
+      "source_label": "utility",
+      "target_label": "hashlib",
+      "confidence": 1.0
+    },
+    {
+      "edge_type": "uses",
+      "source_label": "mitre",
+      "target_label": "hashlib",
+      "confidence": 1.0
+    },
+    {
+      "edge_type": "uses",
+      "source_label": "mitre",
+      "target_label": "jwt",
+      "confidence": 1.0
+    },
+    {
+      "edge_type": "uses",
+      "source_label": "app",
+      "target_label": "hashlib",
+      "confidence": 1.0
+    },
+    {
+      "edge_type": "uses",
+      "source_label": "models",
+      "target_label": "hashlib",
+      "confidence": 1.0
+    },
+    {
+      "edge_type": "implements",
+      "source_label": "hashlib",
+      "target_label": "MD5",
+      "confidence": 1.0
+    },
+    {
+      "edge_type": "implements",
+      "source_label": "hashlib",
+      "target_label": "SHA-256",
+      "confidence": 1.0
+    },
+    {
+      "edge_type": "implements",
+      "source_label": "hashlib",
+      "target_label": "HMAC",
+      "confidence": 1.0
+    }
+  ],
+  "migration_plan": {
+    "priority_queue": []
+  },
+  "scan_stats": {
+    "total_loc": 4093
+  }
+}

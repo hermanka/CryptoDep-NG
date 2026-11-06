@@ -1,0 +1,22 @@
+{
+  "node_f1": 0.5454545454545454,
+  "node_precision": 0.375,
+  "node_recall": 1.0,
+  "edge_f1": 0.0,
+  "edge_precision": 0.0,
+  "edge_recall": 0.0,
+  "multihop_recall": 1.0,
+  "spearman_rho": 1.0,
+  "critical_recall": 1.0,
+  "hallucination_rate": 0.0,
+  "token_efficiency": 0.0,
+  "throughput": 2859.2481848829075,
+  "passes_node_f1": false,
+  "passes_edge_f1": false,
+  "passes_multihop_recall": true,
+  "passes_spearman_rho": true,
+  "passes_critical_recall": true,
+  "passes_hallucination_rate": true,
+  "passes_token_efficiency": true,
+  "passes_throughput": false
+}

@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 760" width="960" height="760">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+  </style>
+  <defs>
+    <marker id="arr-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+    <marker id="arr-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#059669"/>
+    </marker>
+    <marker id="arr-orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/>
+    </marker>
+    <marker id="arr-purple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7c3aed"/>
+    </marker>
+  </defs>
+  <rect width="960" height="760" fill="#ffffff"/>
+  <text x="480" y="22" text-anchor="middle" font-size="15" font-weight="600" fill="#111827">Figure 2. CryptoDep-LLM System Architecture</text>
+  <rect x="45" y="32" width="240" height="46" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+  <text x="165" y="51" text-anchor="middle" font-size="13" font-weight="600" fill="#15803d">&#x1F5C2;&#xFE0F; Enterprise Repository</text>
+  <text x="165" y="68" text-anchor="middle" font-size="11" fill="#6b7280">(Java / Python)</text>
+  <line x1="165" y1="78" x2="165" y2="108" stroke="#2563eb" stroke-width="2" marker-end="url(#arr-blue)"/>
+  <rect x="20" y="90" width="920" height="555" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="8,4"/>
+  <text x="480" y="107" text-anchor="middle" font-size="12" fill="#64748b">Multi-Agent Pipeline  ·  LangGraph 0.2 StateGraph</text>
+  <rect x="368" y="110" width="192" height="490" rx="10" fill="#faf5ff" stroke="#c4b5fd" stroke-width="2"/>
+  <ellipse cx="464" cy="126" rx="88" ry="13" fill="#ede9fe" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="464" y="144" text-anchor="middle" font-size="14" font-weight="600" fill="#7c3aed">CDGState</text>
+  <text x="464" y="160" text-anchor="middle" font-size="11" fill="#6b7280">Shared TypedDict</text>
+  <text x="464" y="174" text-anchor="middle" font-size="11" fill="#7c3aed">— single source of truth —</text>
+  <line x1="376" y1="182" x2="552" y2="182" stroke="#c4b5fd" stroke-width="1"/>
+  <text x="464" y="195" text-anchor="middle" font-size="10" font-weight="600" fill="#5b21b6">Config</text>
+  <text x="464" y="209" text-anchor="middle" font-size="10" fill="#7c3aed">repo_path · lang · llm_thresholds</text>
+  <line x1="376" y1="218" x2="552" y2="218" stroke="#c4b5fd" stroke-width="1"/>
+  <text x="464" y="231" text-anchor="middle" font-size="10" font-weight="600" fill="#5b21b6">A1 Outputs</text>
+  <text x="464" y="245" text-anchor="middle" font-size="10" fill="#7c3aed">file_index · ast_cache · import_graph</text>
+  <line x1="376" y1="254" x2="552" y2="254" stroke="#c4b5fd" stroke-width="1"/>
+  <text x="464" y="267" text-anchor="middle" font-size="10" font-weight="600" fill="#5b21b6">Detection &amp; Reasoning</text>
+  <text x="464" y="281" text-anchor="middle" font-size="10" fill="#7c3aed">raw_findings · validated_findings</text>
+  <text x="464" y="295" text-anchor="middle" font-size="10" fill="#7c3aed">validated_edges · reachability_map</text>
+  <line x1="376" y1="304" x2="552" y2="304" stroke="#c4b5fd" stroke-width="1"/>
+  <text x="464" y="317" text-anchor="middle" font-size="10" font-weight="600" fill="#5b21b6">CDG Outputs</text>
+  <text x="464" y="331" text-anchor="middle" font-size="10" fill="#7c3aed">cdg_document · sqlite_db_path</text>
+  <text x="464" y="345" text-anchor="middle" font-size="10" fill="#7c3aed">neo4j_stats · migration_plan</text>
+  <text x="464" y="359" text-anchor="middle" font-size="10" fill="#7c3aed">report_md</text>
+  <rect x="45" y="110" width="240" height="85" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+  <rect x="45" y="110" width="240" height="26" rx="8" fill="#dbeafe" stroke="none"/>
+  <rect x="45" y="124" width="240" height="12" rx="0" fill="#dbeafe" stroke="none"/>
+  <text x="165" y="128" text-anchor="middle" font-size="13" font-weight="600" fill="#1d4ed8">A1: Code Ingestion</text>
+  <text x="165" y="146" text-anchor="middle" font-size="11" fill="#3b82f6">Tree-sitter AST · NetworkX</text>
+  <text x="165" y="161" text-anchor="middle" font-size="10" fill="#6b7280">&#8594; file_index, import_graph, ast_cache</text>
+  <text x="165" y="175" text-anchor="middle" font-size="10" fill="#94a3b8">async run(CDGState) &#8594; CDGState</text>
+  <line x1="165" y1="195" x2="165" y2="210" stroke="#2563eb" stroke-width="2" marker-end="url(#arr-blue)"/>
+  <rect x="45" y="210" width="240" height="85" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+  <rect x="45" y="210" width="240" height="26" rx="8" fill="#dbeafe" stroke="none"/>
+  <rect x="45" y="224" width="240" height="12" rx="0" fill="#dbeafe" stroke="none"/>
+  <text x="165" y="228" text-anchor="middle" font-size="13" font-weight="600" fill="#1d4ed8">A2: Crypto Detection</text>
+  <text x="165" y="246" text-anchor="middle" font-size="11" fill="#3b82f6">Semgrep (9 rules) + LLM (temp=0)</text>
+  <text x="165" y="261" text-anchor="middle" font-size="10" fill="#6b7280">&#8594; validated_findings (prec &#8805; 0.85)</text>
+  <text x="165" y="275" text-anchor="middle" font-size="10" fill="#94a3b8">async run(CDGState) &#8594; CDGState</text>
+  <line x1="165" y1="295" x2="165" y2="310" stroke="#2563eb" stroke-width="2" marker-end="url(#arr-blue)"/>
+  <rect x="45" y="310" width="240" height="85" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+  <rect x="45" y="310" width="240" height="26" rx="8" fill="#dbeafe" stroke="none"/>
+  <rect x="45" y="324" width="240" height="12" rx="0" fill="#dbeafe" stroke="none"/>
+  <text x="165" y="328" text-anchor="middle" font-size="13" font-weight="600" fill="#1d4ed8">A3: Dependency Reasoning</text>
+  <text x="165" y="346" text-anchor="middle" font-size="11" fill="#3b82f6">CoT LLM (temp=0.2, max_hop=4)</text>
+  <text x="165" y="361" text-anchor="middle" font-size="10" fill="#6b7280">&#8594; validated_edges (&lt;15% hallucination)</text>
+  <text x="165" y="375" text-anchor="middle" font-size="10" fill="#94a3b8">async run(CDGState) &#8594; CDGState</text>
+  <line x1="165" y1="395" x2="165" y2="410" stroke="#2563eb" stroke-width="2" marker-end="url(#arr-blue)"/>
+  <rect x="45" y="410" width="240" height="85" rx="8" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <rect x="45" y="410" width="240" height="26" rx="8" fill="#fed7aa" stroke="none"/>
+  <rect x="45" y="424" width="240" height="12" rx="0" fill="#fed7aa" stroke="none"/>
+  <text x="165" y="428" text-anchor="middle" font-size="13" font-weight="600" fill="#c2410c">A6: Reachability Analyzer &#9881; opt</text>
+  <text x="165" y="446" text-anchor="middle" font-size="11" fill="#ea580c">BFS call-graph from entry points</text>
+  <text x="165" y="461" text-anchor="middle" font-size="10" fill="#6b7280">&#8594; reachability_map &#8712; [0,1]</text>
+  <text x="165" y="475" text-anchor="middle" font-size="10" fill="#94a3b8">skipped if --reachability inactive</text>
+  <line x1="165" y1="495" x2="165" y2="510" stroke="#2563eb" stroke-width="2" marker-end="url(#arr-blue)"/>
+  <rect x="45" y="510" width="240" height="85" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+  <rect x="45" y="510" width="240" height="26" rx="8" fill="#bbf7d0" stroke="none"/>
+  <rect x="45" y="524" width="240" height="12" rx="0" fill="#bbf7d0" stroke="none"/>
+  <text x="165" y="528" text-anchor="middle" font-size="13" font-weight="600" fill="#15803d">A4: CDG Builder</text>
+  <text x="165" y="546" text-anchor="middle" font-size="11" fill="#16a34a">Pydantic v2 &#8594; SQLite (primary)</text>
+  <text x="165" y="561" text-anchor="middle" font-size="10" fill="#6b7280">+ Neo4j (opt) &#8594; CDGDocument</text>
+  <text x="165" y="575" text-anchor="middle" font-size="10" fill="#94a3b8">async run(CDGState) &#8594; CDGState</text>
+  <rect x="678" y="510" width="240" height="85" rx="8" fill="#faf5ff" stroke="#c4b5fd" stroke-width="1.5"/>
+  <rect x="678" y="510" width="240" height="26" rx="8" fill="#ede9fe" stroke="none"/>
+  <rect x="678" y="524" width="240" height="12" rx="0" fill="#ede9fe" stroke="none"/>
+  <text x="798" y="528" text-anchor="middle" font-size="13" font-weight="600" fill="#6d28d9">A5: Migration Planner</text>
+  <text x="798" y="546" text-anchor="middle" font-size="11" fill="#7c3aed">Betweenness centrality</text>
+  <text x="798" y="561" text-anchor="middle" font-size="10" fill="#6b7280">+ composite urgency score</text>
+  <text x="798" y="575" text-anchor="middle" font-size="10" fill="#6b7280">&#8594; MigrationPlan (ranked queue)</text>
+  <path d="M 285,140 L 368,140" stroke="#059669" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arr-green)"/>
+  <rect x="251" y="131" width="150" height="13" rx="2" fill="#f8fafc" opacity="0.95"/>
+  <text x="326" y="140" text-anchor="middle" font-size="9" fill="#059669">file_index, import_graph</text>
+  <path d="M 368,190 L 285,190" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arr-blue)"/>
+  <rect x="287" y="181" width="78" height="13" rx="2" fill="#f8fafc" opacity="0.95"/>
+  <text x="326" y="190" text-anchor="middle" font-size="9" fill="#2563eb">repo context</text>
+  <path d="M 285,240 L 368,240" stroke="#059669" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arr-green)"/>
+  <rect x="269" y="231" width="114" height="13" rx="2" fill="#f8fafc" opacity="0.95"/>
+  <text x="326" y="240" text-anchor="middle" font-size="9" fill="#059669">validated_findings</text>
+  <path d="M 368,290 L 285,290" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arr-blue)"/>
+  <rect x="275" y="281" width="102" height="13" rx="2" fill="#f8fafc" opacity="0.95"/>
+  <text x="326" y="290" text-anchor="middle" font-size="9" fill="#2563eb">findings + graph</text>
+  <path d="M 285,340 L 368,340" stroke="#059669" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arr-green)"/>
+  <rect x="278" y="331" width="96" height="13" rx="2" fill="#f8fafc" opacity="0.95"/>
+  <text x="326" y="340" text-anchor="middle" font-size="9" fill="#059669">validated_edges</text>
+  <path d="M 368,390 L 285,390" stroke="#ea580c" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arr-orange)"/>
+  <rect x="275" y="381" width="102" height="13" rx="2" fill="#f8fafc" opacity="0.95"/>
+  <text x="326" y="390" text-anchor="middle" font-size="9" fill="#ea580c">edges + findings</text>
+  <path d="M 285,450 L 368,450" stroke="#ea580c" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arr-orange)"/>
+  <rect x="275" y="441" width="102" height="13" rx="2" fill="#f8fafc" opacity="0.95"/>
+  <text x="326" y="450" text-anchor="middle" font-size="9" fill="#ea580c">reachability_map</text>
+  <path d="M 368,490 L 285,490" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arr-blue)"/>
+  <rect x="263" y="481" width="126" height="13" rx="2" fill="#f8fafc" opacity="0.95"/>
+  <text x="326" y="490" text-anchor="middle" font-size="9" fill="#2563eb">edges + reachability</text>
+  <path d="M 285,548 L 368,548" stroke="#059669" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arr-green)"/>
+  <rect x="287" y="539" width="78" height="13" rx="2" fill="#f8fafc" opacity="0.95"/>
+  <text x="326" y="548" text-anchor="middle" font-size="9" fill="#059669">cdg_document</text>
+  <path d="M 560,548 L 678,548" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arr-blue)"/>
+  <rect x="580" y="539" width="78" height="13" rx="2" fill="#f8fafc" opacity="0.95"/>
+  <text x="619" y="548" text-anchor="middle" font-size="9" fill="#2563eb">cdg_document</text>
+  <!-- Output label -->
+  <text x="480" y="662" text-anchor="middle" font-size="11" fill="#64748b" font-style="italic">Pipeline Output</text>
+  <rect x="30" y="671" width="195" height="60" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+  <text x="127" y="690" text-anchor="middle" font-size="13" font-weight="600" fill="#15803d">&#128230; cdg_store.db</text>
+  <text x="127" y="706" text-anchor="middle" font-size="11" fill="#6b7280">SQLite (primary)</text>
+  <text x="127" y="721" text-anchor="middle" font-size="10" fill="#94a3b8">auto-created on run</text>
+  <rect x="245" y="671" width="195" height="60" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="342" y="690" text-anchor="middle" font-size="13" font-weight="600" fill="#1d4ed8">&#128279; Neo4j Graph</text>
+  <text x="342" y="706" text-anchor="middle" font-size="11" fill="#6b7280">(optional)</text>
+  <text x="342" y="721" text-anchor="middle" font-size="10" fill="#94a3b8">best-effort export</text>
+  <rect x="460" y="671" width="195" height="60" rx="8" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+  <text x="557" y="690" text-anchor="middle" font-size="13" font-weight="600" fill="#c2410c">&#128203; CycloneDX CBOM</text>
+  <text x="557" y="706" text-anchor="middle" font-size="11" fill="#6b7280">v1.6</text>
+  <text x="557" y="721" text-anchor="middle" font-size="10" fill="#94a3b8">export-cbom command</text>
+  <rect x="675" y="671" width="255" height="60" rx="8" fill="#faf5ff" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="802" y="688" text-anchor="middle" font-size="13" font-weight="600" fill="#6d28d9">&#128196; Migration Report</text>
+  <text x="802" y="703" text-anchor="middle" font-size="11" fill="#6b7280">NIST FIPS 203/204/205/206</text>
+  <text x="802" y="718" text-anchor="middle" font-size="10" fill="#94a3b8">urgency-ranked queue</text>
+  <line x1="798" y1="595" x2="798" y2="648" stroke="#7c3aed" stroke-width="1.5"/>
+  <line x1="127" y1="648" x2="798" y2="648" stroke="#7c3aed" stroke-width="1.5"/>
+  <line x1="127" y1="648" x2="127" y2="671" stroke="#7c3aed" stroke-width="1.5" marker-end="url(#arr-purple)"/>
+  <line x1="342" y1="648" x2="342" y2="671" stroke="#7c3aed" stroke-width="1.5" marker-end="url(#arr-purple)"/>
+  <line x1="557" y1="648" x2="557" y2="671" stroke="#7c3aed" stroke-width="1.5" marker-end="url(#arr-purple)"/>
+  <line x1="798" y1="648" x2="798" y2="671" stroke="#7c3aed" stroke-width="1.5" marker-end="url(#arr-purple)"/>
+  <rect x="634" y="100" width="288" height="108" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="650" y="118" font-size="11" font-weight="600" fill="#374151">Legend</text>
+  <line x1="650" y1="131" x2="686" y2="131" stroke="#2563eb" stroke-width="2" marker-end="url(#arr-blue)"/>
+  <text x="692" y="135" font-size="11" fill="#6b7280">Sequential execution</text>
+  <line x1="650" y1="150" x2="686" y2="150" stroke="#059669" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr-green)"/>
+  <text x="692" y="154" font-size="11" fill="#6b7280">Agent &#8594; CDGState (write)</text>
+  <line x1="650" y1="169" x2="686" y2="169" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr-blue)"/>
+  <text x="692" y="173" font-size="11" fill="#6b7280">CDGState &#8594; Agent (read)</text>
+  <line x1="650" y1="188" x2="686" y2="188" stroke="#ea580c" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr-orange)"/>
+  <text x="692" y="192" font-size="11" fill="#6b7280">A6 optional path</text>
+</svg>

@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 590" width="960" height="590">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+  </style>
+  <defs>
+    <marker id="ablue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+    <marker id="agreen" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#059669"/>
+    </marker>
+    <marker id="aorange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/>
+    </marker>
+    <marker id="apurple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7c3aed"/>
+    </marker>
+  </defs>
+  <rect width="960" height="590" fill="#ffffff"/>
+  <text x="480" y="20" text-anchor="middle" font-size="15" font-weight="600" fill="#111827">Figure 3. CDG Schema v1.0 — Node Types and Edge Relationships</text>
+  <rect x="20" y="35" width="253" height="430" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="146" y="52" text-anchor="middle" font-size="12" font-weight="600" fill="#1e40af">Application Layer</text>
+  <rect x="296" y="35" width="280" height="430" rx="10" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.5"/>
+  <text x="436" y="52" text-anchor="middle" font-size="12" font-weight="600" fill="#92400e">Cryptographic Layer</text>
+  <rect x="598" y="185" width="338" height="130" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+  <text x="767" y="201" text-anchor="middle" font-size="12" font-weight="600" fill="#14532d">PQC Target Layer</text>
+  <rect x="30" y="60" width="230" height="118" rx="8" fill="#ffffff" stroke="#dbeafe" stroke-width="1.5"/>
+  <rect x="30" y="60" width="230" height="26" rx="8" fill="#dbeafe" stroke="none"/>
+  <rect x="30" y="75" width="230" height="11" fill="#dbeafe" stroke="none"/>
+  <text x="145" y="78" text-anchor="middle" font-size="13" font-weight="600" fill="#1d4ed8">AppComponent</text>
+  <text x="145" y="95" text-anchor="middle" font-size="10" fill="#4b5563">component_type · language</text>
+  <text x="145" y="111" text-anchor="middle" font-size="10" fill="#4b5563">file_path · quantum_ready</text>
+  <text x="145" y="171" text-anchor="middle" font-size="9" font-style="italic" fill="#9ca3af">e.g. Service, Controller, Config</text>
+  <rect x="30" y="198" width="230" height="90" rx="8" fill="#ffffff" stroke="#dbeafe" stroke-width="1.5"/>
+  <rect x="30" y="198" width="230" height="26" rx="8" fill="#dbeafe" stroke="none"/>
+  <rect x="30" y="213" width="230" height="11" fill="#dbeafe" stroke="none"/>
+  <text x="145" y="216" text-anchor="middle" font-size="13" font-weight="600" fill="#1d4ed8">Protocol</text>
+  <text x="145" y="233" text-anchor="middle" font-size="10" fill="#4b5563">protocol_name · version</text>
+  <text x="145" y="249" text-anchor="middle" font-size="10" fill="#4b5563">quantum_vulnerable_handshake</text>
+  <text x="145" y="265" text-anchor="middle" font-size="10" fill="#4b5563">entry_point</text>
+  <text x="145" y="281" text-anchor="middle" font-size="9" font-style="italic" fill="#9ca3af">e.g. TLS 1.2, SSH, JWT</text>
+  <rect x="30" y="310" width="230" height="105" rx="8" fill="#ffffff" stroke="#dbeafe" stroke-width="1.5"/>
+  <rect x="30" y="310" width="230" height="26" rx="8" fill="#dbeafe" stroke="none"/>
+  <rect x="30" y="325" width="230" height="11" fill="#dbeafe" stroke="none"/>
+  <text x="145" y="328" text-anchor="middle" font-size="13" font-weight="600" fill="#1d4ed8">DataAsset</text>
+  <text x="145" y="345" text-anchor="middle" font-size="10" fill="#4b5563">asset_type · sensitivity</text>
+  <text x="145" y="361" text-anchor="middle" font-size="10" fill="#4b5563">data_lifetime_years</text>
+  <text x="145" y="377" text-anchor="middle" font-size="10" fill="#4b5563">classification</text>
+  <text x="145" y="408" text-anchor="middle" font-size="9" font-style="italic" fill="#9ca3af">e.g. PII, HealthRecord, Secret</text>
+  <rect x="306" y="60" width="262" height="90" rx="8" fill="#ffffff" stroke="#fde68a" stroke-width="1.5"/>
+  <rect x="306" y="60" width="262" height="26" rx="8" fill="#fde68a" stroke="none"/>
+  <rect x="306" y="75" width="262" height="11" fill="#fde68a" stroke="none"/>
+  <text x="437" y="78" text-anchor="middle" font-size="13" font-weight="600" fill="#92400e">CryptoLibrary</text>
+  <text x="437" y="95" text-anchor="middle" font-size="10" fill="#4b5563">library_name · package_manager</text>
+  <text x="437" y="111" text-anchor="middle" font-size="10" fill="#4b5563">version · is_quantum_safe</text>
+  <text x="437" y="143" text-anchor="middle" font-size="9" font-style="italic" fill="#9ca3af">e.g. javax.crypto · maven · 1.8</text>
+  <rect x="306" y="170" width="262" height="118" rx="8" fill="#ffffff" stroke="#fde68a" stroke-width="1.5"/>
+  <rect x="306" y="170" width="262" height="26" rx="8" fill="#fde68a" stroke="none"/>
+  <rect x="306" y="185" width="262" height="11" fill="#fde68a" stroke="none"/>
+  <text x="437" y="188" text-anchor="middle" font-size="13" font-weight="600" fill="#92400e">CryptoAlgorithm</text>
+  <text x="437" y="205" text-anchor="middle" font-size="10" fill="#4b5563">algorithm_family · parameter_set</text>
+  <text x="437" y="221" text-anchor="middle" font-size="10" fill="#4b5563">quantum_vuln_class</text>
+  <text x="437" y="237" text-anchor="middle" font-size="10" fill="#4b5563">hndl_risk · urgency_score</text>
+  <text x="437" y="281" text-anchor="middle" font-size="9" font-style="italic" fill="#9ca3af">e.g. RSA-2048 · quantum_vulnerable · 0.9</text>
+  <rect x="306" y="310" width="262" height="105" rx="8" fill="#ffffff" stroke="#fde68a" stroke-width="1.5"/>
+  <rect x="306" y="310" width="262" height="26" rx="8" fill="#fde68a" stroke="none"/>
+  <rect x="306" y="325" width="262" height="11" fill="#fde68a" stroke="none"/>
+  <text x="437" y="328" text-anchor="middle" font-size="13" font-weight="600" fill="#92400e">CryptoKey</text>
+  <text x="437" y="345" text-anchor="middle" font-size="10" fill="#4b5563">key_type · key_size_bits</text>
+  <text x="437" y="361" text-anchor="middle" font-size="10" fill="#4b5563">storage_type · hndl_risk</text>
+  <text x="437" y="377" text-anchor="middle" font-size="10" fill="#4b5563">expiry_date</text>
+  <text x="437" y="408" text-anchor="middle" font-size="9" font-style="italic" fill="#9ca3af">e.g. RSAPrivateKey · 2048-bit · HSM</text>
+  <rect x="608" y="208" width="318" height="97" rx="8" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.5"/>
+  <rect x="608" y="208" width="318" height="26" rx="8" fill="#bbf7d0" stroke="none"/>
+  <rect x="608" y="223" width="318" height="11" fill="#bbf7d0" stroke="none"/>
+  <text x="767" y="226" text-anchor="middle" font-size="13" font-weight="600" fill="#14532d">PQCAlgorithm</text>
+  <text x="767" y="243" text-anchor="middle" font-size="10" fill="#4b5563">algorithm_id · fips_standard</text>
+  <text x="767" y="259" text-anchor="middle" font-size="10" fill="#4b5563">nist_security_level</text>
+  <text x="767" y="275" text-anchor="middle" font-size="10" fill="#4b5563">hybrid_classical_pair</text>
+  <text x="767" y="298" text-anchor="middle" font-size="9" font-style="italic" fill="#9ca3af">e.g. ML-KEM-768 · FIPS 203 · L3</text>
+  <path d="M 260,119 L 306,105" stroke="#2563eb" stroke-width="1.8" fill="none"  marker-end="url(#ablue)"/>
+  <rect x="268" y="98" width="30" height="13" rx="2" fill="#ffffff" opacity="0.93"/>
+  <text x="283" y="107" text-anchor="middle" font-size="9" font-weight="600" fill="#2563eb">uses</text>
+  <path d="M 437,150 L 437,170" stroke="#2563eb" stroke-width="1.8" fill="none"  marker-end="url(#ablue)"/>
+  <rect x="401" y="153" width="72" height="13" rx="2" fill="#ffffff" opacity="0.93"/>
+  <text x="437" y="162" text-anchor="middle" font-size="9" font-weight="600" fill="#2563eb">implements</text>
+  <path d="M 95,60 C 78,22 202,22 190,60" stroke="#2563eb" stroke-width="1.8" fill="none" stroke-dasharray="4,2" marker-end="url(#ablue)"/>
+  <rect x="109" y="16" width="68" height="13" rx="2" fill="#ffffff" opacity="0.93"/>
+  <text x="143" y="25" text-anchor="middle" font-size="9" font-weight="600" fill="#2563eb">depends_on</text>
+  <path d="M 100,178 L 100,198" stroke="#2563eb" stroke-width="1.8" fill="none"  marker-end="url(#ablue)"/>
+  <rect x="71" y="181" width="58" height="13" rx="2" fill="#ffffff" opacity="0.93"/>
+  <text x="100" y="190" text-anchor="middle" font-size="9" font-weight="600" fill="#2563eb">relies_on</text>
+  <path d="M 260,158 L 274,158 L 274,362 L 306,362" stroke="#ea580c" stroke-width="1.8" fill="none"  marker-end="url(#aorange)"/>
+  <rect x="237" y="253" width="62" height="13" rx="2" fill="#ffffff" opacity="0.93"/>
+  <text x="268" y="262" text-anchor="middle" font-size="9" font-weight="600" fill="#ea580c">configures</text>
+  <path d="M 306,252 L 282,252 L 282,374 L 260,374" stroke="#059669" stroke-width="1.8" fill="none"  marker-end="url(#agreen)"/>
+  <rect x="252" y="305" width="50" height="13" rx="2" fill="#ffffff" opacity="0.93"/>
+  <text x="277" y="314" text-anchor="middle" font-size="9" font-weight="600" fill="#059669">protects</text>
+  <path d="M 306,382 L 260,382" stroke="#059669" stroke-width="1.8" fill="none"  marker-end="url(#agreen)"/>
+  <rect x="258" y="369" width="50" height="13" rx="2" fill="#ffffff" opacity="0.93"/>
+  <text x="283" y="378" text-anchor="middle" font-size="9" font-weight="600" fill="#059669">protects</text>
+  <path d="M 568,244 L 608,256" stroke="#7c3aed" stroke-width="1.8" fill="none"  marker-end="url(#apurple)"/>
+  <rect x="554" y="238" width="68" height="13" rx="2" fill="#ffffff" opacity="0.93"/>
+  <text x="588" y="247" text-anchor="middle" font-size="9" font-weight="600" fill="#7c3aed">migrates_to</text>
+  <rect x="562" y="256" width="100" height="12" rx="2" fill="#faf5ff" opacity="0.95"/>
+  <text x="612" y="265" text-anchor="middle" font-size="8" fill="#7c3aed">&#8596; auto (PQC_MIGRATION_TABLE)</text>
+  <rect x="20" y="484" width="920" height="88" rx="8" fill="#f9fafb" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="30" y="500" font-size="11" font-weight="600" fill="#374151">Edge Types</text>
+  <line x1="30" y1="518" x2="60" y2="518" stroke="#2563eb" stroke-width="1.5"  marker-end="url(#ablue)"/>
+  <text x="66" y="522" font-size="10" fill="#4b5563">uses  (AppComponent &#8594; CryptoLibrary)</text>
+  <line x1="30" y1="536" x2="60" y2="536" stroke="#2563eb" stroke-width="1.5"  marker-end="url(#ablue)"/>
+  <text x="66" y="540" font-size="10" fill="#4b5563">implements  (CryptoLibrary &#8594; CryptoAlgorithm)</text>
+  <line x1="30" y1="554" x2="60" y2="554" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#ablue)"/>
+  <text x="66" y="558" font-size="10" fill="#4b5563">depends_on  (AppComponent &#8594; AppComponent, self-loop)</text>
+  <line x1="310" y1="518" x2="340" y2="518" stroke="#2563eb" stroke-width="1.5"  marker-end="url(#ablue)"/>
+  <text x="346" y="522" font-size="10" fill="#4b5563">relies_on  (AppComponent &#8594; Protocol)</text>
+  <line x1="310" y1="536" x2="340" y2="536" stroke="#ea580c" stroke-width="1.5"  marker-end="url(#aorange)"/>
+  <text x="346" y="540" font-size="10" fill="#4b5563">configures  (AppComponent &#8594; CryptoKey)</text>
+  <line x1="310" y1="554" x2="340" y2="554" stroke="#059669" stroke-width="1.5"  marker-end="url(#agreen)"/>
+  <text x="346" y="558" font-size="10" fill="#4b5563">protects  (CryptoAlgorithm/Key &#8594; DataAsset)</text>
+  <line x1="610" y1="527" x2="640" y2="527" stroke="#7c3aed" stroke-width="1.5"  marker-end="url(#apurple)"/>
+  <text x="646" y="531" font-size="10" fill="#4b5563">migrates_to  (CryptoAlgorithm &#8594; PQCAlgorithm)</text>
+  <line x1="610" y1="545" x2="640" y2="545" stroke="#7c3aed" stroke-width="1.5"  marker-end="url(#apurple)"/>
+  <text x="646" y="549" font-size="10" fill="#4b5563">&#8196;&#8196;&#8196; auto-inserted by A4 via PQC_MIGRATION_TABLE</text>
+</svg>

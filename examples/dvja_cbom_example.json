@@ -1,0 +1,103 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:a1b2c3d4-0000-4000-8000-000000000001",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-05-01T08:00:00Z",
+    "tools": [
+      {
+        "vendor": "CryptoDep-LLM",
+        "name": "CryptoDep-LLM",
+        "version": "1.0.0"
+      }
+    ],
+    "component": {
+      "type": "application",
+      "name": "dvja",
+      "version": "1.0.0"
+    }
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "cdg:CryptoAlgorithm:rsa1024",
+      "name": "RSA-1024",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke",
+          "parameterSetIdentifier": "RSA-1024",
+          "curve": null,
+          "executionEnvironment": "software",
+          "implementationPlatform": "jvm",
+          "certificationLevel": ["none"],
+          "cryptoFunctions": ["keygen", "encrypt", "decrypt"],
+          "classicalSecurityLevel": 80,
+          "nistQuantumSecurityLevel": 0
+        },
+        "oid": "1.2.840.113549.1.1.1"
+      },
+      "properties": [
+        {"name": "cdg:quantum_vuln_class", "value": "quantum_vulnerable"},
+        {"name": "cdg:urgency_score", "value": "90.0"},
+        {"name": "cdg:migration_priority", "value": "critical"},
+        {"name": "cdg:hndl_risk", "value": "true"},
+        {"name": "cdg:source_ref", "value": "src/main/java/com/appsecco/dvja/service/CryptoService.java:L18"},
+        {"name": "cdg:detected_by", "value": "static_rule"},
+        {"name": "cdg:confidence", "value": "0.99"}
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "cdg:CryptoAlgorithm:md5",
+      "name": "MD5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "parameterSetIdentifier": "MD5",
+          "executionEnvironment": "software",
+          "implementationPlatform": "jvm",
+          "certificationLevel": ["none"],
+          "cryptoFunctions": ["digest"],
+          "classicalSecurityLevel": 0,
+          "nistQuantumSecurityLevel": 0
+        }
+      },
+      "properties": [
+        {"name": "cdg:quantum_vuln_class", "value": "quantum_safe_symmetric"},
+        {"name": "cdg:urgency_score", "value": "0.0"},
+        {"name": "cdg:migration_priority", "value": "none"},
+        {"name": "cdg:source_ref", "value": "src/main/java/com/appsecco/dvja/service/CryptoService.java:L31"},
+        {"name": "cdg:detected_by", "value": "static_rule"},
+        {"name": "cdg:confidence", "value": "0.99"}
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "cdg:PQCAlgorithm:mlkem768",
+      "name": "ML-KEM-768",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "kem",
+          "parameterSetIdentifier": "ML-KEM-768",
+          "executionEnvironment": "software",
+          "cryptoFunctions": ["encapsulate", "decapsulate"],
+          "nistQuantumSecurityLevel": 3
+        }
+      },
+      "properties": [
+        {"name": "cdg:fips_standard", "value": "FIPS 203"},
+        {"name": "cdg:replaces", "value": "RSA-1024"}
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "cdg:CryptoAlgorithm:rsa1024",
+      "dependsOn": ["cdg:PQCAlgorithm:mlkem768"]
+    }
+  ]
+}

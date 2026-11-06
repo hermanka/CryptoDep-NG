@@ -1,0 +1,107 @@
+rules:
+  - id: crypto-javascript-node-api
+    languages: [javascript]
+    severity: INFO
+    message: "Node crypto API: $METHOD using $ALG"
+    patterns:
+      - pattern-either:
+          - pattern: require($MODULE).$METHOD($ALG, ...)
+          - patterns:
+              - pattern-inside: |
+                  const $CRYPTO = require($MODULE);
+                  ...
+              - pattern: $CRYPTO.$METHOD($ALG, ...)
+          - patterns:
+              - pattern-inside: |
+                  import * as $CRYPTO from $MODULE;
+                  ...
+              - pattern: $CRYPTO.$METHOD($ALG, ...)
+          - patterns:
+              - pattern-inside: |
+                  import { $METHOD as $FUNCTION } from $MODULE;
+                  ...
+              - pattern: $FUNCTION($ALG, ...)
+          - patterns:
+              - pattern-inside: |
+                  import { $METHOD } from $MODULE;
+                  ...
+              - pattern: $METHOD($ALG, ...)
+          - patterns:
+              - pattern-inside: |
+                  const { $METHOD: $FUNCTION } = require($MODULE);
+                  ...
+              - pattern: $FUNCTION($ALG, ...)
+          - patterns:
+              - pattern-inside: |
+                  const { $METHOD } = require($MODULE);
+                  ...
+              - pattern: $METHOD($ALG, ...)
+      - metavariable-regex:
+          metavariable: $MODULE
+          regex: ^['"](?:node:)?crypto['"]$
+      - metavariable-regex:
+          metavariable: $METHOD
+          regex: ^(createHash|createHmac|createCipheriv|createDecipheriv|createSign|createVerify|generateKeyPair|generateKeyPairSync|createECDH)$
+      - metavariable-regex:
+          metavariable: $ALG
+          regex: (?i)^['"]?(rsa(?:-pss)?|ec|dh|ed25519|ed448|x25519|x448|secp256k1|prime256v1|aes-(128|192|256)-(gcm|cbc|ctr)|md5|sha-?(1|256|384|512)|rsa-sha256)['"]?$
+    metadata:
+      category: crypto-javascript-api
+
+  - id: crypto-javascript-node-default-api
+    languages: [javascript]
+    severity: INFO
+    message: "Node crypto API: $METHOD using $ALG"
+    patterns:
+      - pattern-either:
+          - pattern-inside: |
+              import $CRYPTO from 'crypto';
+              ...
+          - pattern-inside: |
+              import $CRYPTO from 'node:crypto';
+              ...
+      - pattern: $CRYPTO.$METHOD($ALG, ...)
+      - metavariable-regex:
+          metavariable: $METHOD
+          regex: ^(createHash|createHmac|createCipheriv|createDecipheriv|createSign|createVerify|generateKeyPair|generateKeyPairSync|createECDH)$
+      - metavariable-regex:
+          metavariable: $ALG
+          regex: (?i)^['"]?(rsa(?:-pss)?|ec|dh|ed25519|ed448|x25519|x448|secp256k1|prime256v1|aes-(128|192|256)-(gcm|cbc|ctr)|md5|sha-?(1|256|384|512)|rsa-sha256)['"]?$
+    metadata:
+      category: crypto-javascript-api
+
+  - id: crypto-javascript-webcrypto-string
+    languages: [javascript]
+    severity: INFO
+    message: "Web Crypto API: $METHOD using $ALG"
+    patterns:
+      - pattern-either:
+          - pattern: crypto.subtle.$METHOD($ALG, ...)
+          - pattern: window.crypto.subtle.$METHOD($ALG, ...)
+          - pattern: globalThis.crypto.subtle.$METHOD($ALG, ...)
+      - metavariable-regex:
+          metavariable: $METHOD
+          regex: ^(digest|generateKey|importKey|encrypt|decrypt|sign|verify|deriveKey|deriveBits|wrapKey|unwrapKey)$
+      - metavariable-regex:
+          metavariable: $ALG
+          regex: (?i)^['"]?(rsa-oaep|rsa-pss|rsassa-pkcs1-v1_5|ecdsa|ecdh|aes-gcm|aes-cbc|aes-ctr|hmac|sha-(1|256|384|512))['"]?$
+    metadata:
+      category: crypto-javascript-api
+
+  - id: crypto-javascript-webcrypto-object
+    languages: [javascript]
+    severity: INFO
+    message: "Web Crypto API: $METHOD using $ALG"
+    patterns:
+      - pattern-either:
+          - pattern: "crypto.subtle.$METHOD({name: $ALG, ...}, ...)"
+          - pattern: "window.crypto.subtle.$METHOD({name: $ALG, ...}, ...)"
+          - pattern: "globalThis.crypto.subtle.$METHOD({name: $ALG, ...}, ...)"
+      - metavariable-regex:
+          metavariable: $METHOD
+          regex: ^(digest|generateKey|encrypt|decrypt|sign|verify|deriveKey|deriveBits|wrapKey|unwrapKey)$
+      - metavariable-regex:
+          metavariable: $ALG
+          regex: (?i)^['"]?(rsa-oaep|rsa-pss|rsassa-pkcs1-v1_5|ecdsa|ecdh|aes-gcm|aes-cbc|aes-ctr|hmac|sha-(1|256|384|512))['"]?$
+    metadata:
+      category: crypto-javascript-api

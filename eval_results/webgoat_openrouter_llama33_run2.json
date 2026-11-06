@@ -1,0 +1,20 @@
+{
+  "node_f1": 1.0,
+  "node_precision": 1.0,
+  "node_recall": 1.0,
+  "edge_f1": 0.75,
+  "edge_precision": 0.75,
+  "edge_recall": 0.75,
+  "multihop_recall": 0.0,
+  "spearman_rho": 1.0,
+  "critical_recall": 0.0,
+  "hallucination_rate": 0.0,
+  "token_efficiency": 0.0,
+  "throughput": 15731.82626264626,
+  "passes_node_f1": true,
+  "passes_edge_f1": true,
+  "passes_multihop_recall": false,
+  "passes_spearman_rho": true,
+  "passes_critical_recall": false,
+  "passes_hallucination_rate": true
+}

@@ -1,0 +1,27 @@
+{# A3 — Dependency Reasoning Prompt (PRD Section 9.2)
+   Pattern: Chain-of-thought with explicit citation requirement.
+   Multi-file context (import graph + relevant file slices).
+   Deterministic post-validation gates the output.
+#}
+{% set SYSTEM %}
+You are analyzing cryptographic dependency chains in enterprise code.
+Trace how cryptographic algorithms flow through the codebase.
+For each dependency relationship, cite the EXACT file and line number.
+Think step by step. Only claim dependencies you can directly verify in the code.
+{% endset %}
+
+{% set USER %}
+Crypto findings to analyze:
+{{ findings_json }}
+
+Import graph for context:
+{{ import_graph_excerpt }}
+
+Relevant file slices:
+{{ file_slices }}
+
+Trace the dependency chains. For each chain, output:
+  {source_node} --[edge_type]--> {target_node} | evidence: {file}:{line}
+
+Then output the complete JSON edge list.
+{% endset %}

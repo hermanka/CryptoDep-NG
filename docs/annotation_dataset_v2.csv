@@ -1,0 +1,42 @@
+task,item_id,benchmark,source_label,edge_type,target_label,node_type,A1_verdict,A2_verdict,agreed,adjudicated_verdict,adjudication_reason
+task1_node,N01,WebGoat,RSA-2048,,,CryptoAlgorithm,QV,QV,YES,QV,
+task1_node,N02,WebGoat,MD5,,,CryptoAlgorithm,QSS,QSS,YES,QSS,
+task1_node,N03,WebGoat,SHA-256,,,CryptoAlgorithm,QSS,QSS,YES,QSS,
+task1_node,N04,WebGoat,HMAC,,,CryptoAlgorithm,QSS,GW,NO,QSS,HMAC refers to HMAC-SHA256 (JWT HS256) - 128-bit PQ security meets NIST threshold; QSS per CDG schema 4.3
+task1_node,N05,PyGoat,MD5,,,CryptoAlgorithm,QSS,QSS,YES,QSS,
+task1_node,N06,PyGoat,SHA-256,,,CryptoAlgorithm,QSS,QSS,YES,QSS,
+task1_node,N07,PyGoat,HMAC,,,CryptoAlgorithm,QSS,QSS,YES,QSS,
+task1_node,N08,DVJA,MD5,,,CryptoAlgorithm,QSS,QSS,YES,QSS,
+task1_node,N09,DVJA,RSA-1024,,,CryptoAlgorithm,QV,QV,YES,QV,
+task1_node,N10,SpringPetclinic,BCrypt,,,CryptoAlgorithm,QSS,QSS,YES,QSS,
+task2_edge,E01,WebGoat,CryptoUtil,uses,java.security,,PRESENT,PRESENT,YES,PRESENT,
+task2_edge,E02,WebGoat,HashingAssignment,uses,java.security,,PRESENT,PRESENT,YES,PRESENT,
+task2_edge,E03,WebGoat,DisplayUser,uses,java.security,,PRESENT,ABSENT,NO,PRESENT,DisplayUser.java imports java.security.MessageDigest line 33 - verified in AST
+task2_edge,E04,WebGoat,java.security,implements,RSA-2048,,PRESENT,PRESENT,YES,PRESENT,
+task2_edge,E05,WebGoat,java.security,implements,SHA-256,,PRESENT,PRESENT,YES,PRESENT,
+task2_edge,E06,WebGoat,java.security,implements,MD5,,PRESENT,PRESENT,YES,PRESENT,
+task2_edge,E07,WebGoat,RSA-2048,migrates_to,ML-KEM-768,,PRESENT,PRESENT,YES,PRESENT,
+task2_edge,E08,WebGoat,RSA-2048,migrates_to,ML-DSA-65,,PRESENT,PRESENT,YES,PRESENT,
+task2_edge,E09,PyGoat,views,uses,hashlib,,PRESENT,PRESENT,YES,PRESENT,
+task2_edge,E10,PyGoat,views,uses,jwt,,PRESENT,PRESENT,YES,PRESENT,
+task2_edge,E11,PyGoat,utility,uses,hashlib,,PRESENT,PRESENT,YES,PRESENT,
+task2_edge,E12,PyGoat,mitre,uses,hashlib,,PRESENT,PRESENT,YES,PRESENT,
+task2_edge,E13,PyGoat,mitre,uses,jwt,,PRESENT,ABSENT,NO,PRESENT,mitre/views.py has jwt.encode() call - verified in AST; A2 confused mitre with unrelated module
+task2_edge,E14,PyGoat,app,uses,hashlib,,PRESENT,PRESENT,YES,PRESENT,
+task2_edge,E15,PyGoat,models,uses,hashlib,,PRESENT,PRESENT,YES,PRESENT,
+task2_edge,E16,PyGoat,hashlib,implements,MD5,,PRESENT,PRESENT,YES,PRESENT,
+task2_edge,E17,PyGoat,hashlib,implements,SHA-256,,PRESENT,PRESENT,YES,PRESENT,
+task2_edge,E18,PyGoat,hashlib,implements,HMAC,,PRESENT,PRESENT,YES,PRESENT,
+task2_edge,E19,DVJA,RSA-1024,migrates_to,ML-KEM-768,,PRESENT,PRESENT,YES,PRESENT,
+task2_edge,E20,DVJA,RSA-1024,migrates_to,ML-DSA-65,,PRESENT,PRESENT,YES,PRESENT,
+task2_edge,E21,DVJA,CryptoService,uses,java.security,,PRESENT,PRESENT,YES,PRESENT,
+task2_edge,E22,DVJA,java.security,implements,MD5,,PRESENT,PRESENT,YES,PRESENT,
+task2_edge,E23,DVJA,java.security,implements,RSA-1024,,PRESENT,PRESENT,YES,PRESENT,
+task2_edge,D01,WebGoat,HashingAssignment,implements,MD5,,ABSENT,ABSENT,YES,ABSENT,DECOY - skips library layer
+task2_edge,D02,WebGoat,DisplayUser,implements,SHA-256,,ABSENT,ABSENT,YES,ABSENT,DECOY - wrong edge type; correct is uses
+task2_edge,D03,PyGoat,views,implements,MD5,,ABSENT,ABSENT,YES,ABSENT,DECOY - skips library layer
+task2_edge,D04,DVJA,CryptoService,implements,RSA-1024,,ABSENT,ABSENT,YES,ABSENT,DECOY - skips java.security layer
+task2_edge,D05,WebGoat,CryptoUtil,implements,SHA-256,,ABSENT,ABSENT,YES,ABSENT,DECOY - wrong edge type and skips library layer
+task2_edge,D06,PyGoat,utility,uses,jwt,,ABSENT,ABSENT,YES,ABSENT,DECOY - utility.py imports hashlib only
+task2_edge,D07,WebGoat,HashingAssignment,migrates_to,ML-KEM-768,,ABSENT,ABSENT,YES,ABSENT,DECOY - AppComponent cannot have migrates_to edge
+task2_edge,D08,DVJA,MD5,migrates_to,ML-KEM-768,,ABSENT,ABSENT,YES,ABSENT,DECOY - MD5 is QSS not QV; no migration required

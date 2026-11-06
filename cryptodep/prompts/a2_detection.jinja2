@@ -1,0 +1,25 @@
+{# A2 — Crypto Detection Prompt (PRD Section 9.1)
+   Pattern: Structured output with explicit JSON schema.
+   Short context window (CPG-slice, max 2000 tokens).
+   System prompt establishes cryptographer persona.
+#}
+{% set SYSTEM %}
+You are a senior cryptography engineer performing security audit.
+Analyze the provided code slice and identify ALL cryptographic usages.
+Respond ONLY with a valid JSON array matching this schema: [CryptoFinding].
+Do not include any text outside the JSON. If no crypto found, return [].
+{% endset %}
+
+{% set USER %}
+File: {{ file_path }}:{{ start_line }}-{{ end_line }}
+Context slice (CPG-filtered):
+{{ code_slice }}
+
+Identify crypto usages. For each finding include:
+- algorithm_family: string (RSA/ECC/AES/SHA/DH/ECDSA/...)
+- parameter_set: string or null
+- use_context: key_exchange|digital_signature|encryption|mac|hashing|other
+- source_ref: exact file:line
+- confidence: float 0.0-1.0
+- evidence: the exact code snippet triggering this finding
+{% endset %}

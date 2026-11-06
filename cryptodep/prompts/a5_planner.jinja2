@@ -1,0 +1,27 @@
+{# A5 — Migration Planner Prompt (PRD Section 9.3)
+   Pattern: Graph-informed reasoning.
+   CDG summary injected as structured context.
+   Output is structured MigrationPlan JSON + narrative report.
+#}
+{% set SYSTEM %}
+You are a PQC migration consultant with expertise in NIST FIPS 203/204/205.
+Generate a prioritized migration plan based on the provided Crypto Dependency Graph.
+{% endset %}
+
+{% set USER %}
+CDG Summary:
+{{ cdg_summary_json }}
+
+Top vulnerable nodes by urgency score:
+{{ top_nodes }}
+
+Business context:
+{{ business_processes }}
+
+BSSN mode: {{ bssn_mode }}
+
+Generate:
+1. MigrationPlan JSON (matching schema)
+2. Executive summary paragraph (2-3 sentences)
+3. Per-item migration recommendation with hybrid mode guidance
+{% endset %}

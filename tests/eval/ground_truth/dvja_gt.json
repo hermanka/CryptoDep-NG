@@ -1,0 +1,106 @@
+{
+  "nodes": [
+    {
+      "node_id": "dvja:node:md5",
+      "node_type": "CryptoAlgorithm",
+      "label": "MD5",
+      "algorithm_family": "MD5",
+      "parameter_set": null,
+      "quantum_vuln_class": "quantum_safe_symmetric",
+      "migration_priority": "not_required",
+      "hndl_risk": false,
+      "migration_urgency_score": 0.0
+    },
+    {
+      "node_id": "dvja:node:rsa1024",
+      "node_type": "CryptoAlgorithm",
+      "label": "RSA-1024",
+      "algorithm_family": "RSA",
+      "parameter_set": "1024",
+      "quantum_vuln_class": "quantum_vulnerable",
+      "migration_priority": "critical",
+      "hndl_risk": true,
+      "migration_urgency_score": 90.0
+    },
+    {
+      "node_id": "dvja:node:ml-kem-768",
+      "node_type": "PQCAlgorithm",
+      "label": "ML-KEM-768",
+      "algorithm_id": "ML-KEM-768",
+      "fips_standard": "FIPS 203",
+      "security_level": 3,
+      "primitive_type": "KEM",
+      "math_basis": "lattice_mlwe"
+    },
+    {
+      "node_id": "dvja:node:ml-dsa-65",
+      "node_type": "PQCAlgorithm",
+      "label": "ML-DSA-65",
+      "algorithm_id": "ML-DSA-65",
+      "fips_standard": "FIPS 204",
+      "security_level": 3,
+      "primitive_type": "DSA",
+      "math_basis": "lattice_mlwe"
+    },
+    {
+      "node_id": "dvja:node:comp:crypto-service",
+      "node_type": "AppComponent",
+      "label": "CryptoService",
+      "component_type": "service",
+      "language": "java"
+    },
+    {
+      "node_id": "dvja:node:lib:java-security",
+      "node_type": "CryptoLibrary",
+      "label": "java.security",
+      "library_name": "java.security",
+      "language": "java"
+    }
+  ],
+  "edges": [
+    {
+      "edge_type": "migrates_to",
+      "source_label": "RSA-1024",
+      "target_label": "ML-KEM-768",
+      "confidence": 1.0
+    },
+    {
+      "edge_type": "migrates_to",
+      "source_label": "RSA-1024",
+      "target_label": "ML-DSA-65",
+      "confidence": 1.0
+    },
+    {
+      "edge_type": "uses",
+      "source_label": "CryptoService",
+      "target_label": "java.security",
+      "confidence": 1.0
+    },
+    {
+      "edge_type": "implements",
+      "source_label": "java.security",
+      "target_label": "MD5",
+      "confidence": 1.0
+    },
+    {
+      "edge_type": "implements",
+      "source_label": "java.security",
+      "target_label": "RSA-1024",
+      "confidence": 1.0
+    }
+  ],
+  "migration_plan": {
+    "priority_queue": [
+      {
+        "rank": 1,
+        "current_algorithm": "RSA-1024",
+        "recommended_pqc": "ML-KEM-768",
+        "urgency_score": 90.0,
+        "migration_priority": "critical"
+      }
+    ]
+  },
+  "scan_stats": {
+    "total_loc": 1409
+  }
+}

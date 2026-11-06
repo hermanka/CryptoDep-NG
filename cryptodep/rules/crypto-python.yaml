@@ -1,0 +1,140 @@
+rules:
+  # crypto-python-import: from cryptography.*, import ssl, hashlib, hmac
+  - id: crypto-python-import-cryptography
+    patterns:
+      - pattern: from cryptography.$X import $Y
+    message: "Crypto import: from cryptography.$X import $Y"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: crypto-python-import
+
+  - id: crypto-python-import-ssl
+    patterns:
+      - pattern: import ssl
+    message: "Crypto import: ssl"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: crypto-python-import
+
+  - id: crypto-python-import-hashlib
+    patterns:
+      - pattern: import hashlib
+    message: "Crypto import: hashlib"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: crypto-python-import
+
+  - id: crypto-python-import-hmac
+    patterns:
+      - pattern: import hmac
+    message: "Crypto import: hmac"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: crypto-python-import
+
+  # crypto-python-api: RSA.generate(), ECC.generate_key(), Fernet(), AES.new()
+  - id: crypto-python-rsa-generate
+    patterns:
+      - pattern: RSA.generate($SIZE)
+    message: "Crypto API: RSA.generate($SIZE)"
+    languages: [python]
+    severity: WARNING
+    metadata:
+      category: crypto-python-api
+
+  - id: crypto-python-ecc-generate
+    patterns:
+      - pattern: ECC.generate_key(curve=$CURVE)
+    message: "Crypto API: ECC.generate_key(curve=$CURVE)"
+    languages: [python]
+    severity: WARNING
+    metadata:
+      category: crypto-python-api
+
+  - id: crypto-python-fernet
+    patterns:
+      - pattern: Fernet($KEY)
+    message: "Crypto API: Fernet (symmetric encryption)"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: crypto-python-api
+
+  - id: crypto-python-aes-new
+    patterns:
+      - pattern: AES.new($KEY, $MODE)
+    message: "Crypto API: AES.new"
+    languages: [python]
+    severity: WARNING
+    metadata:
+      category: crypto-python-api
+
+  # crypto-constants: specific hashlib algorithm calls with explicit family metadata
+  - id: crypto-python-hashlib-md5
+    pattern: hashlib.md5(...)
+    message: "Weak hash: hashlib.md5"
+    languages: [python]
+    severity: WARNING
+    metadata:
+      category: crypto-python-api
+      algorithm_family: MD5
+
+  - id: crypto-python-hashlib-sha1
+    pattern: hashlib.sha1(...)
+    message: "Weak hash: hashlib.sha1"
+    languages: [python]
+    severity: WARNING
+    metadata:
+      category: crypto-python-api
+      algorithm_family: SHA-1
+
+  - id: crypto-python-hashlib-sha256
+    pattern: hashlib.sha256(...)
+    message: "Hash: hashlib.sha256"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: crypto-python-api
+      algorithm_family: SHA-256
+
+  - id: crypto-python-hashlib-sha512
+    pattern: hashlib.sha512(...)
+    message: "Hash: hashlib.sha512"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: crypto-python-api
+      algorithm_family: SHA-512
+
+  # crypto-tls-config: SSLContext, ssl.wrap_socket
+  - id: crypto-python-sslcontext
+    patterns:
+      - pattern: ssl.SSLContext($PROTO)
+    message: "TLS config: ssl.SSLContext($PROTO)"
+    languages: [python]
+    severity: WARNING
+    metadata:
+      category: crypto-tls-config
+
+  # crypto-jwt: jwt.encode/decode, algorithm= parameter
+  - id: crypto-python-jwt-encode
+    patterns:
+      - pattern: jwt.encode($PAYLOAD, $SECRET, algorithm=$ALG)
+    message: "JWT signing: jwt.encode with algorithm=$ALG"
+    languages: [python]
+    severity: WARNING
+    metadata:
+      category: crypto-jwt
+
+  - id: crypto-python-jwt-decode
+    patterns:
+      - pattern: jwt.decode($TOKEN, $SECRET, algorithms=$ALGS)
+    message: "JWT verification: jwt.decode with algorithms=$ALGS"
+    languages: [python]
+    severity: WARNING
+    metadata:
+      category: crypto-jwt
